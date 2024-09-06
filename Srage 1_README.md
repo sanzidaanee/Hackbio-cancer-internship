@@ -6,6 +6,7 @@ Authors (@slack): Sanzida Akhter Anee (@Sanzida), Sk Arif (@arif_shaikh), Mina Z
 
 
 ## Video Link
+
 ## Introduction
 
 Cancer is a disease that results when the abnormal cells divide in an uncontrolled way and spread into other tissues called metastasis, the main reason for the death from the cancer. There are more than 100 types of cancer. The fundamental cause of cancer is mutations in certain genes or epigenetic modifications, and the characterization of alterations in gene expression will advance a large number of new potential diagnostic and therapeutic targets for cancer. 
@@ -22,10 +23,14 @@ In this experiment,  transcriptomes of 4043 cancer and 548 normal tissue samples
 
 - Gene signatures (Table 2), sets of genes whose expression levels distinguish between cancer and normal samples (Figure 3).
 
-- Investigated seven cross-cancer gene signatures (Figure 2) that were altered in at least four types of human cancers BLCA, BRCA, LUAD, and LUSC. GO analysis, KEGG analysis, and Pathway Commons analysis indicate that genes in these clusters are enriched in pathways related to cell cycle regulation, which are a common mechanism underlying tumorigenesis. So, this observation supports the hypothesis that abnormalities in cell cycle-associated pathways directly contribute to the progression of cancer. 
+- Investigated seven cross-cancer gene signatures (Figure 2) that were altered in at least four types of human cancers BLCA, BRCA, LUAD, and LUSC. GO analysis, KEGG analysis, and Pathway Commons analysis indicate that genes in these clusters are enriched in pathways related to cell cycle regulation, which are a common mechanism underlying tumorigenesis. So, this observation supports the hypothesis that abnormalities in cell cycle-associated pathways directly contribute to the progression of cancer.
+  
+![Snip20240907_28](https://github.com/user-attachments/assets/83b5152c-02e7-4a76-8308-339f42caed65)
+
+  
 
 
-
+Figure 2: The normalized expression levels of seven cross-cancer gene signatures across 12 types of cancer and normal samples.
 
 - In addition, the results revealed that four gene sets are significantly altered across seven cancer types (Table 2) which indicate that there are common mechanisms underlying the initiation and/or development of human cancers from different organs or different tissues in the same organ.
 
@@ -51,6 +56,10 @@ So the two key points can be focused on further research:
  - How gene expression patterns change in the vicinity of driver mutations
 
 ## Workflow
+
+![Snip20240906_23](https://github.com/user-attachments/assets/9ce59f24-eb50-4f70-bd24-d6c03965307d)
+
+
 ## References
 
 Peng, L., Bian, X. W., Li, D. K., Xu, C., Wang, G. M., Xia, Q. Y., & Xiong, Q. (2015). Large-scale RNA-Seq transcriptome analysis of 4043 cancers and 548 normal tissue controls across 12 TCGA cancer types. Scientific reports, 5(1), 13413.
