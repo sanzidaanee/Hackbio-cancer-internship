@@ -6,6 +6,7 @@ Authors (@slack): Sanzida Akhter Anee (@Sanzida), Sk Arif (@arif_shaikh), Mina Z
 
 
 ## Video Link
+(https://www.linkedin.com/posts/activity-7238165714333790208-G8HH?utm_source=share&utm_medium=member_desktop)
 
 ## Introduction
 
