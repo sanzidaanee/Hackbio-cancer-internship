@@ -43,7 +43,7 @@ Figure 2: The normalized expression levels of seven cross-cancer gene signatures
 
 ## Conclusion
 
-Conclusion: This study emphasizes the importance of analyzing data across multiple cancer types to uncover commonalities in gene expression patterns and identify potential therapeutic targets for cancer.
+This study emphasizes the importance of analyzing data across multiple cancer types to uncover commonalities in gene expression patterns and identify potential therapeutic targets for cancer.
 
 
 ## Challenges  and future research
