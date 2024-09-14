@@ -1,16 +1,7 @@
 
 # Gene Expression Data Visualization and Interpretation to Generate a Heatmap and Perform Downstream Functional Enrichment Analysis
 
-
-## Heatmaps for Gene Expression Analysis
-### What is a Heatmap?
-
-
-A heatmap is a common method of visualizing data. In the context of gene expression data, it displays the expression of many genes across many samples and helps to find patterns in gene expression data by aggregating data points and turning them into a simple visual representation making it easier to find a pattern [1]. 
-
-In heatmaps, the data displayed in a grid, each row represents a gene and each column represents a sample. The changes in gene expression is represented by color and intensity of the boxes.   
-
-
+Authors (@slack): Sanzida Akhter Anee (@Sanzida), Sk Arif (@arif_shaikh), Mina Zakaria (@mina_zakaria), Nada Ghozlan (@Nad1), Mennatallah Mohamed Ebrahim Mahmoud (@Mennatallah), Stéphie Raveloson (@StephieRav) 
 
 
 
@@ -21,8 +12,6 @@ In heatmaps, the data displayed in a grid, each row represents a gene and each c
 A heatmap is a common method of visualizing data. In the context of gene expression data, it displays the expression of many genes across many samples and helps to find patterns in gene expression data by aggregating data points and turning them into a simple visual representation making it easier to find a pattern [1]. 
 
 In heatmaps, the data displayed in a grid, each row represents a gene and each column represents a sample. The changes in gene expression is represented by color and intensity of the boxes.   
-
-
 
 
 
@@ -41,11 +30,6 @@ https://raw.githubusercontent.com/HackBio-Internship/public_datasets/main/Cancer
 ## Heatmap from Glioblastoma Dataset
 
 In the heatmap, glioblastoma samples, with the choice of color palette (diverging vs. sequential) plays an important role in understanding the patterns of gene expression. 
-
-
-
-
-
 
 
 
@@ -96,6 +80,16 @@ ncol(data)
 ```bash
   heatmap.2(as.matrix(data), trace = 'none')
 ```
+
+![Fig 1](https://github.com/user-attachments/assets/4e2d14db-f108-44c8-931b-3c699b31af9a)
+
+
+
+
+
+
+
+
     
 
  
@@ -107,6 +101,13 @@ ncol(data)
           Colv = TRUE, Rowv = FALSE)
 ```
 
+![Fig 2](https://github.com/user-attachments/assets/ed8d6cfa-11ed-4c3b-b4c5-9c45bf5d0a1f)
+
+
+
+
+
+
 
 
 ### Heatmap with diverging color palettes
@@ -117,6 +118,12 @@ ncol(data)
           Colv = TRUE, Rowv = FALSE,
           col=hcl.colors(100, palette = 'green-brown'))
 ```
+
+![Fig 3](https://github.com/user-attachments/assets/249a73dd-6aac-4031-b746-3bcf49d7b7d3)
+
+
+
+
     
 
 
@@ -128,6 +135,8 @@ ncol(data)
           col=hcl.colors(100, palette = 'Blues3'))
 ```
 
+
+![Fig 4](https://github.com/user-attachments/assets/15d33eb8-1136-4a70-a82c-6a1232a64056)
 
 
 
@@ -182,6 +191,11 @@ The heatmap can be combined with clustering methods which represent  group genes
           col=hcl.colors(100, palette = 'green-brown'))
 ```
 
+![rows only](https://github.com/user-attachments/assets/ed1786f1-4e1e-44b8-9830-d67ae6fb35e0)
+
+
+
+
 
 ### Heatmap with Clustering of Samples (Columns Only)
 
@@ -192,6 +206,12 @@ The heatmap can be combined with clustering methods which represent  group genes
           col=hcl.colors(100, palette = 'green-brown'))
 ```
 
+![Col only](https://github.com/user-attachments/assets/c578672c-e781-40a2-a39a-21a23a3bc19f)
+
+
+
+
+
 ### Heatmap with Clustering both Genes and Sample Together
 
 ```bash
@@ -201,6 +221,11 @@ The heatmap can be combined with clustering methods which represent  group genes
           col=hcl.colors(100, palette = 'green-brown'))
 
 ```
+
+![both rows and col](https://github.com/user-attachments/assets/e5976f0b-d1e1-4954-be84-effafc5f28e6)
+
+
+
 
 
 ## Heatmap Clustering  Results Interpretation from Glioblastoma Dataset
@@ -224,7 +249,7 @@ group2<- c(6, 7,8,9,10)
 ```
 
 
-### Group 1 & 2 data from data 
+### Group 1 & 2 from data 
 
 ```bash
 group1_data <- data[, group1]
@@ -364,10 +389,24 @@ print(gene_conversion)
 
 We used the ShinyGO (Version: v0.741) tool with the GO biological process and P-value cutoff (FDR) is 0.5  to visualize the top 10 pathways. From here we choose to describe the top 3 enriched pathways based on  biological processes. 
 
+![pathways](https://github.com/user-attachments/assets/7ac656e4-e38e-42d7-8b0e-c424fb60f2b9)
+
+
+
+
+
+
+
 
 ## Pathway Visualization
 
 To visualize top 10 pathways for upregulated gene of glioblastoma dataset by using lollipop plot with scaling the points according to the negative log10 of the p-value.
+
+<img width="930" alt="download" src="https://github.com/user-attachments/assets/ec0b3321-bf0a-4698-bc33-d795b0e9aa17">
+
+
+
+
 
 
 ## Top 3 Enriched Pathways
@@ -413,17 +452,6 @@ To visualize top 10 pathways for upregulated gene of glioblastoma dataset by usi
 
 
 
-
-
-
-
-## Heatmaps for Gene Expression Analysis
-### What is a Heatmap?
-
-
-A heatmap is a common method of visualizing data. In the context of gene expression data, it displays the expression of many genes across many samples and helps to find patterns in gene expression data by aggregating data points and turning them into a simple visual representation making it easier to find a pattern [1]. 
-
-In heatmaps, the data displayed in a grid, each row represents a gene and each column represents a sample. The changes in gene expression is represented by color and intensity of the boxes.   
 
 
 
