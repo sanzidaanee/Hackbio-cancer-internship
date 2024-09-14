@@ -43,6 +43,7 @@ if (!require("BiocManager", quietly = TRUE))
 BiocManager::install('biomaRt')
 install.packages("gplots")
 install.packages("dplyr")
+install.packages("ggplot2")
 
 ```
 
@@ -52,6 +53,7 @@ install.packages("dplyr")
 llibrary(biomaRt)
 library(gplots)
 library(dplyr)
+library(ggplot2)
 ```
 
 
@@ -403,6 +405,51 @@ We used the ShinyGO (Version: v0.741) tool with the GO biological process and P-
 To visualize top 10 pathways for upregulated gene of glioblastoma dataset by using lollipop plot with scaling the points according to the negative log10 of the p-value.
 
 <img width="930" alt="download" src="https://github.com/user-attachments/assets/ec0b3321-bf0a-4698-bc33-d795b0e9aa17">
+
+
+
+## Pathway Visualization in R
+
+```bash
+#Input data from the table in the image
+data <- data.frame(
+  pathway = c("Ribosomal small subunit assembly", 
+              "Maturation of SSU-rRNA from tricistronic rRNA", 
+              "Proteolysis", 
+              "Cellular sodium ion homeostasis", 
+              "Maturation of SSU-rRNA", 
+              "Ribosome assembly", 
+              "Regulation of defense response to virus by virus", 
+              "Sodium ion homeostasis", 
+              "Ribosomal small subunit biogenesis", 
+              "Extracellular matrix disassembly"),
+  nGenes = c(1, 1, 3, 1, 1, 1, 1, 1, 1, 1),
+  FDR = c(1.4e-01, 1.4e-01, 1.4e-01, 1.4e-01, 1.4e-01, 1.4e-01, 1.4e-01, 1.4e-01, 1.7e-01, 1.7e-01),
+  fold_enrichment = c(200, 88.4, 5.6, 172.7, 66.7, 59.4, 126.6, 65.5, 45.2, 40.4)
+)
+
+# Calculate -log10(FDR) for significance scaling
+data$log_FDR <- -log10(data$FDR)
+
+ 
+
+# Create the lollipop plot
+ggplot(data, aes(y = reorder(pathway, nGenes), x = nGenes)) +  # Switch axes
+  geom_segment(aes(y = reorder(pathway, nGenes), 
+                   yend = reorder(pathway, nGenes), 
+                   x = 0, 
+                   xend = nGenes), color = "gray") +  # Lollipop stems
+  geom_point(aes(size = log_FDR, color = fold_enrichment), alpha = 0.7) +  # Lollipop heads
+  scale_size_continuous(range = c(3, 10)) +  # Adjust size based on -log10(FDR)
+  scale_color_gradient(low = "lightblue", high = "darkblue") +  # Color based on fold enrichment
+  labs(x = "Number of Genes", y = "Pathway", 
+       size = "-log10(FDR)", color = "Fold Enrichment",
+       title = "Pathways and Associated Genes with Significance") +
+  theme_minimal() +
+  theme(axis.text.y = element_text(angle = 0, hjust = 1))  # Ensure y-axis labels are readable
+```
+
+![Rplot](https://github.com/user-attachments/assets/6b1d8145-a57d-48a2-a92b-4f0365ce318f)
 
 
 
