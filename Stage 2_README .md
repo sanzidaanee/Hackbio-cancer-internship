@@ -4,6 +4,10 @@
 Authors (@slack): Sanzida Akhter Anee (@Sanzida), Sk Arif (@arif_shaikh), Mina Zakaria (@mina_zakaria), Nada Ghozlan (@Nad1), Mennatallah Mohamed Ebrahim Mahmoud (@Mennatallah), Stéphie Raveloson (@StephieRav) 
 
 
+## R Code link
+
+https://github.com/sanzidaanee/Hackbio-cancer-internship/blob/main/code/gene_expression_heatmap.Rmd
+
 
 ## Heatmaps for Gene Expression Analysis
 ### What is a Heatmap?
