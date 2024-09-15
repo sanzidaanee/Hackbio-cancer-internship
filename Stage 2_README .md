@@ -28,8 +28,7 @@ Glioblastoma, also known as glioblastoma multiforme (GBM), is an aggressive type
 
 ### Link of Data
 
-https://raw.githubusercontent.com/HackBio-Internship/public_datasets/main/Cancer2024/glioblastoma.csv
-
+(https://github.com/sanzidaanee/Hackbio-cancer-internship/blob/main/Stage%202/Data/glioblastoma.csv)
 
 ## Heatmap from Glioblastoma Dataset
 
