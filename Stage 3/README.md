@@ -31,6 +31,9 @@ The query searches the  TCGA-LUAD (Lung Adenocarcinoma) dataset with open-access
 
 ## Main Workflow
 
+![Snip20240924_3](https://github.com/user-attachments/assets/508de50f-4f0c-4afc-b3f9-dba0ac4e8c14)
+
+
 
 
 
@@ -44,6 +47,13 @@ The query searches the  TCGA-LUAD (Lung Adenocarcinoma) dataset with open-access
  - ML models can be trained on gene expression data to  identify key biomarkers for lung cancer that are linked to prognosis and  targeted therapy
 
 
+## References
+
+1. Liang, Y., Xie, Y., Yu, H., Zhu, W., Yin, C., Zhang, X., & Dong, Z. (2023). Clinical significance of TMEM229A Q200del mutation in lung adenocarcinoma.
+2. Shiba‐Ishii, A. (2021). Significance of stratifin in early progression of lung adenocarcinoma and its potential therapeutic relevance. Pathology international, 71(10), 655-665.
+3. Herbst, R. S., Morgensztern, D., and Boshoff, C. "The biology and management of non-small cell lung cancer." Nature, vol. 553, 2018, pp. 446-454.
+4. Verma, G., Ravichandar, S., Abraham, E. A., & Sampath, S. (2024). Myriad Presentation of Adenocarcinoma Lung. Journal of Evolution of Medical and Dental Sciences, 55-57.
+5. Xie, H., Zhang, J. F., & Li, Q. (2021). Identification and analysis of genes associated with lung adenocarcinoma by integrated bioinformatics methods. Annals of human genetics, 85(3-4), 125-137.
 
 
 
