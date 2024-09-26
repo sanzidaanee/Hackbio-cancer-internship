@@ -151,7 +151,12 @@ The project aims to predict sample types—primary tumor or solid tissue—using
 
 ### Results
 
-The Random Forest classifier achieves perfect accuracy of 1.00 on the lung cancer LUAD dataset, with no misclassifications. The confusion matrix and classification report indicate flawless precision, recall, and F1-scores for both Primary Tumor and Solid Tissue Normal. However, potential overfitting must be considered due to the small dataset.
+Link of result: (https://github.com/sanzidaanee/Hackbio-cancer-internship/blob/main/Stage%203/Data/ml-results%20.csv)
+
+ - The Random Forest classifier achieves perfect accuracy of 1.00 on the lung cancer LUAD dataset, with no misclassifications.
+ - The confusion matrix and classification report indicate flawless precision, recall, and F1-scores for both Primary Tumor and Solid Tissue Normal.
+
+However, potential overfitting must be considered due to the small dataset.
 
 ## Conclusion 
 
