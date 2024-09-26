@@ -69,6 +69,9 @@ luadQ <- GDCquery(project = 'TCGA-LUAD',
 
 
 ```
+### Data type
+
+The query searches the  TCGA-LUAD (Lung Adenocarcinoma) dataset with open-access RNA-seq gene expression data using  STAR - Counts refers to the Spliced Transcripts Alignment to a Reference (STAR) alignment method, which is a popular tool for aligning RNA-Seq reads to a reference genome and pulls raw reads counts from primary tumor tissue (tumor) and solid tissue normal (normal tissue adjacent to the tumor). 
 
 
 ###Downlaod query data
