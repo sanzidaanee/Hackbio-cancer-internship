@@ -61,16 +61,12 @@ Metadata is important for exploring and making meaningful insights from the larg
 ### Differential Expression Analysis
 
 
-Differential expression analysis is a fundamental technique used to identify changes in gene expression between different biological conditions like healthy or diseased situations. By analyzing the RNA-seq data can identify the up and down regulated genes that respond to specific conditions or treatments [5]. 
-
-When the upregulated and downregulated genes are expressed in tumor or healthy cells indicate that if a gene is expressed in a cancer cell but not in healthy normal tissue, then that gene can be used as a potential biomarker to detect early cancer and drugs can be identified to target that gene.
+Differential expression analysis is a fundamental technique used to identify changes in gene expression between different biological conditions like healthy or diseased situations. By analyzing the RNA-seq data can identify the up and down regulated genes that respond to specific conditions or treatments can be used as a potential biomarker for early detection of cancer [5]. 
 
 
 ### Functional Enrichment Analysis
 
-Enrichment analysis is used to identify biological pathways, gene sets or functional categories in a given set of genes that are associated with specific types of cancer. 
-
-Generate a bar plot to visualize the results of a functional enrichment analysis, focusing on biological processes, cellular components, molecular functions, and pathways associated with upregulated and downregulated genes. It shows the top 5 enriched GO terms (Biological Processes, Cellular Components, Molecular Functions) and pathways for a set of genes using the TCGA data. 
+Enrichment analysis is used to identify biological pathways, gene sets or functional categories in a given set of genes that are associated with specific types of cancer visualizing by barplot focusing on biological processes, cellular components, molecular functions, and pathways associated with genes. 
 
 
 ## Results and Visualization
