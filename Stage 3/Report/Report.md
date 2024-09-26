@@ -100,12 +100,9 @@ Figure  1: Volcano plot of lung adenocarcinoma dataset visualize gene expression
 
 
 
-- A heatmap shows patterns of gene expression across tumor and normal solid tissue. Each row indicates a specific gene and each column represents a different sample of tumor and normal tissues. The color shows expression levels like  red shows higher expression levels; upregulated, whereas blue indicates low-level of expression.    
+- The results of  heatmap reveal the tumor and normal solid tissue samples clustering separately on both sides of the heatmap suggest a strong differential gene expression between two conditions (tumor and normal solid tissue). Genes that are expressed at higher levels in tumor tissues appear red in the tumor column and blue in normal tissue and these genes  might be involved in cancer progression or oncogenic processes. 
 
-
-- The results of  heatmap reveal the tumor and normal solid tissue samples clustering separately on both sides of the heatmap suggest a strong differential gene expression between two conditions. Genes that are expressed at higher levels in tumor tissues appear red in the tumor column and blue in normal tissue and these genes  might be involved in cancer progression or oncogenic processes. 
-
-- On the other hand,  Genes that are expressed at lower levels in tumor tissues will appear blue in tumor columns and red in normal tissue columns may be a tumor suppressor gene.
+- On the other hand,  genes that are expressed at lower levels in tumor tissues will appear blue in tumor columns and red in normal tissue columns may be a tumor suppressor gene.
 
 
 So, identifying the key genes that are consistently differentially expressed between tumor and normal tissues, can be used as potential biomarkers for diagnosis or prognosis.
