@@ -12,8 +12,7 @@ Authors (@slack): Sanzida Akhter Anee (@Sanzida), Sk Arif (@arif_shaikh), Nada G
 #### Github code link
 DE_Analysis R Code: (https://github.com/sanzidaanee/Hackbio-cancer-internship/blob/main/Stage%203/Code/DEG.Rmd)
 
-ML Python Code: (https://github.com/sanzidaanee/Hackbio-cancer-internship/blob/main/Stage%203/Code/ML%20lung%20Cancer%20.ipynb)
-
+ML Python Code: (https://github.com/sanzidaanee/Hackbio-cancer-internship/blob/main/Stage%203/Code/ML_Lung_Cancer.ipynb)
 #### Link of dataset
 (https://github.com/sanzidaanee/Hackbio-cancer-internship/tree/main/Stage%203/Data)
 
