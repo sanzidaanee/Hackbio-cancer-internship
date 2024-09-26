@@ -67,6 +67,17 @@ Differential expression analysis is a fundamental technique used to identify cha
 
 Enrichment analysis is used to identify biological pathways, gene sets or functional categories in a given set of genes that are associated with specific types of cancer visualizing by barplot focusing on biological processes, cellular components, molecular functions, and pathways associated with genes. 
 
+## Train Machine Learning Models
+
+The  aim is to predict sample types—primary tumor or solid tissue—using feature selection and machine learning to identify cancerous samples. [6].
+
+### Methods 
+
+ - To analyze the gene expression data, we set the barcode as the index for the metadata, ensuring a match with the gene expression dataset.
+ - After subsetting to include only common samples, we define the classification target
+ - Perform feature selection using RFE
+ - Train a Random Forest classifier, and evaluate its performance
+
 
 ## Results and Visualization
 
@@ -138,18 +149,8 @@ Figure 3: Functional enrichment analysis of upregulated genes for lung adenocarc
 Figure 4: Functional enrichment analysis of downregulated genes for lung adenocarcinoma
 
 
-## Machine Learning Models
 
-The project aims to predict sample types—primary tumor or solid tissue—using feature selection and machine learning to identify cancerous samples. [6].
-
-### Methods 
-
- - To analyze the gene expression data, we set the barcode as the index for the metadata, ensuring a match with the gene expression dataset.
- - After subsetting to include only common samples, we define the classification target
- - Perform feature selection using RFE
- - Train a Random Forest classifier, and evaluate its performance
-
-### Results
+### ML Results
 
 Link of result: (https://github.com/sanzidaanee/Hackbio-cancer-internship/blob/main/Stage%203/Data/ml-results%20.csv)
 
