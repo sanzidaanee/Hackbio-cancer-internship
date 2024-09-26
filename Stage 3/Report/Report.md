@@ -141,22 +141,18 @@ Figure 4: Functional enrichment analysis of downregulated genes for lung adenoca
 
 ## Machine Learning Models
 
-Machine learning can be used in cancer research to distinguish between tumor and solid normal tissue. ML models can help in early detection of cancer by comparing tumor and normal tissues, and identify novel biomarkers for cancer diagnosis. 
+The project aims to predict sample types—primary tumor or solid tissue—using feature selection and machine learning to identify cancerous samples. [6].
 
+### Methods 
 
-The Random Forest model is a widely used machine learning algorithm for classification of gene expression data. This method constructs multiple decision trees during training and outputs the mode of the classes (classification) or mean prediction (regression) that improve accuracy. Random feature selection is considered for splitting the dataset.
+ - To analyze the gene expression data, we set the barcode as the index for the metadata, ensuring a match with the gene expression dataset.
+ - After subsetting to include only common samples, we define the classification target
+ - Perform feature selection using RFE
+ - Train a Random Forest classifier, and evaluate its performance
 
- - Split the dataset into training and testing sets (e.g., 80% for training, 20% for testing).
- - Check for duplicate columns both in the training and test data
- - Transposed normalized dataset 
- - Renamed the first column to “barcode” and drop the first row
- - We used Pandas and RandomForest Classifier libraries respectively to manipulate and prepare the dataset and train the model using Random 
-    Forest.
- - Train the Random Forest Model: randomly select subset of the data and train  to classify whether a tissue sample is primary or solid 
-   based on the input features.
- - Test the Model: After training, the model is tested to evaluate its performance.
+### Results
 
-
+The Random Forest classifier achieves perfect accuracy of 1.00 on the lung cancer LUAD dataset, with no misclassifications. The confusion matrix and classification report indicate flawless precision, recall, and F1-scores for both Primary Tumor and Solid Tissue Normal. However, potential overfitting must be considered due to the small dataset.
 
 ## Conclusion 
 
@@ -176,6 +172,7 @@ The Random Forest model is a widely used machine learning algorithm for classifi
 4. The Cancer Genome Atlas. (2015). Data Portal. National Cancer Institute. https://tcga-data.nci.nih.gov/tcga/tcgaHome2.jsp
 
 5. Wang, Z., Gerstein, M., and Snyder, M. "RNA-Seq: a revolutionary tool for transcriptomics." Nature Reviews Genetics, vol. 10, no. 1, 2009, pp. 57-63.
+6. Abdelwahab O, Awad N, Elserafy M, Badr E (2022) A feature selection-based framework to identify biomarkers for cancer diagnosis: A focus on lung adenocarcinoma. PLOS ONE 17(9): e0269126. https://doi.org/10.1371/journal.pone.0269126)
 
 
 
