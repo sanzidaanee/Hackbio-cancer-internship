@@ -165,6 +165,21 @@ Figure 4: Functional enrichment analysis of downregulated genes for lung adenoca
 
 ## Machine Learning Models
 
+Machine learning can be used in cancer research to distinguish between tumor and solid normal tissue. ML models can help in early detection of cancer by comparing tumor and normal tissues, and identify novel biomarkers for cancer diagnosis. 
+Supervised learning algorithms like random forest can be trained on gene expression data to classify samples as either tumor or normal tissue that provide further information on dysregulation in cancer cells. 
+
+The Random Forest model is a widely used machine learning algorithm for classification of gene expression data. This method constructs multiple decision trees during training and outputs the mode of the classes (classification) or mean prediction (regression) that improve accuracy. Random feature selection is considered for splitting the dataset.
+
+ - Split the dataset into training and testing sets (e.g., 80% for training, 20% for testing).
+ - Check for duplicate columns both in the training and test data
+ - Transposed normalized dataset 
+ - Renamed the first column to “barcode” and drop the first row
+ - We used Pandas and RandomForest Classifier libraries respectively to manipulate and prepare the dataset and train the model using Random 
+    Forest.
+ - Train the Random Forest Model: randomly select subset of the data and train  to classify whether a tissue sample is primary or solid 
+   based on the input features.
+ - Test the Model: After training, the model is tested to evaluate its performance.
+
 
 
 ## Conclusion 
