@@ -48,8 +48,6 @@ Metadata is important for exploring and making meaningful insights from the larg
 
 - Normalization in RNA-Seq data is used to adjust raw read counts to account for various biases and ensure that gene expression levels can be accurately compared across different samples.
 
-- The gene length normalization method is used to account for the fact that genes have different lengths, and longer genes are more likely to have higher read counts simply because there is more of the gene to be sequenced. 
-
 
 #### Filtering
 
