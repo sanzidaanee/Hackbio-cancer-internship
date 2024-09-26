@@ -8,11 +8,14 @@ Authors (@slack): Sanzida Akhter Anee (@Sanzida), Sk Arif (@arif_shaikh), Nada G
 
 ## Link
 
-#### Github repo 
-
+#### Github repo : (https://github.com/sanzidaanee/Hackbio-cancer-internship/tree/main/Stage%203)
 #### Github code link
+DE_Analysis R Code: (https://github.com/sanzidaanee/Hackbio-cancer-internship/blob/main/Stage%203/Code/DEG.Rmd)
+
+ML Python Code: (https://github.com/sanzidaanee/Hackbio-cancer-internship/blob/main/Stage%203/Code/ML%20lung%20Cancer%20.ipynb)
 
 #### Link of dataset
+(https://github.com/sanzidaanee/Hackbio-cancer-internship/tree/main/Stage%203/Data)
 
 ## Introduction
 
@@ -90,7 +93,9 @@ By identifying pathways related to the biological process of cancer help to find
 - DEGs were identified using a t-statistical test, setting a significance level of 1%. The log2 fold change (FC) was calculated with cutoff 1 and >1 for upregulation and <   -1 for downregulation. 
 
 - From this analysis, 3277 upregulated genes and 6357 downregulated genes were extracted from a raw extracted dataset. 
-- A volcano plot was created to visualize these results, showing how highly differentially  genes were expressed based on fold changes and p values. So, the volcano plot would show genes up-regulated in lung adenocarcinoma on the right side (e.g., cancer-associated genes), while those down-regulated in the cancer state appear on the left side. 
+- A volcano plot was created to visualize these results, showing how highly differentially  genes were expressed based on fold changes and p values. So, the volcano plot would show genes up-regulated in lung adenocarcinoma on the right side (e.g., cancer-associated genes), while those down-regulated in the cancer state appear on the left side.
+  
+![Volcano Plot](https://github.com/user-attachments/assets/17e6767b-6904-4545-a278-828a3e3b72f4)
 
 
 
@@ -118,6 +123,7 @@ Figure  1: Volcano plot of lung adenocarcinoma dataset visualize gene expression
 So, identifying the key genes that are consistently differentially expressed between tumor and normal tissues, can be used as potential biomarkers for diagnosis or prognosis.
 
 
+![Heatmap](https://github.com/user-attachments/assets/1a25877d-dec4-4e2c-a9c7-15c5fc11906b)
 
 
 
@@ -140,20 +146,18 @@ Figure 2: Heatmap showing clusters on both genes and samples
 
 - Top enrichment pathways are inhibition of matrix metalloproteinases and  downregulation of this inhibitors allows for increased tumor invasion and metastasis , intrinsic prothrombin activation pathway closely linked to tumor microenvironment and genes involved in this pathway cell cycle control of chromosomal replication pathway leads to genomic instability, enabling the accumulation of mutations that drive lung cancer progression. 
 
-
-
-
-
-
-
-
+[Upregulated_genes_EA.pdf](https://github.com/user-attachments/files/17142026/Upregulated_genes_EA.pdf)
 
 Figure 3: Functional enrichment analysis of upregulated genes for lung adenocarcinoma
+
+
+[Downregulated_genes_EA.pdf](https://github.com/user-attachments/files/17142027/Downregulated_genes_EA.pdf)
+
 
 Figure 4: Functional enrichment analysis of downregulated genes for lung adenocarcinoma
 
 
-## Machine learning models
+## Machine Learning Models
 
 
 
