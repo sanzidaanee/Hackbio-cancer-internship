@@ -25,10 +25,6 @@ Lung adenocarcinoma represents a histopathological subtype of non-small cell lun
 The lung adenocarcinoma (LUAD) is one of the 3 lung tumors studied by The Cancer Genomic Atlas (TCGA) through its lung cancer research. By June 2015, 521 LUAD samples had been analyzed, and the data had been uploaded to the TCGA data portal. A subset of 230 tumors was the subject of the TCGA lung cancer report for LUAD [4]. 
 
 
-### Download data
-
-TCGAbiolinks is an R/Bioconductor package designed to facilitate the retrieval, analysis, and integration of data from The Cancer Genome Atlas (TCGA) and other Genomic Data Commons (GDC) resources.
-
 ## Data Preprocessing
 
 ### Step 1: Create metadata
