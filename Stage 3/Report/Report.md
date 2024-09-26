@@ -146,12 +146,18 @@ Figure 2: Heatmap showing clusters on both genes and samples
 
 - Top enrichment pathways are inhibition of matrix metalloproteinases and  downregulation of this inhibitors allows for increased tumor invasion and metastasis , intrinsic prothrombin activation pathway closely linked to tumor microenvironment and genes involved in this pathway cell cycle control of chromosomal replication pathway leads to genomic instability, enabling the accumulation of mutations that drive lung cancer progression. 
 
-[Upregulated_genes_EA.pdf](https://github.com/user-attachments/files/17142026/Upregulated_genes_EA.pdf)
+
+
+![Upregulated_genes_EA](https://github.com/user-attachments/assets/fef42a14-417a-45a3-b8fc-ee42c32bd3c2)
+
+
+
 
 Figure 3: Functional enrichment analysis of upregulated genes for lung adenocarcinoma
 
 
-[Downregulated_genes_EA.pdf](https://github.com/user-attachments/files/17142027/Downregulated_genes_EA.pdf)
+![Downregulated_genes_EA](https://github.com/user-attachments/assets/fb3d3ccb-c456-41da-bddf-ac7dae77f3c3)
+
 
 
 Figure 4: Functional enrichment analysis of downregulated genes for lung adenocarcinoma
