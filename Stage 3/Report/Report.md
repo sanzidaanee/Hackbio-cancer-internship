@@ -125,14 +125,10 @@ Figure 2: Heatmap showing clusters on both genes and samples
 
 - Functional enrichment analysis was conducted on differentially expressed genes from lung cancer samples, revealing significant enrichment of several key biological processes. 
 
-- In upregulated genes, the top three GO biological process are included behavior,  cell adhesion and biological adhesion and their upregulation is highly relevant in lung cancer because these mechanisms enable tumor cells to become invasive, migrate to distant sites, and ultimately lead to metastasis which is a major cause of lung cancer mortality.
-
-- In lung adenocarcinoma, top enrichment of pathways for upregulated genes are  agranulocyte adhesion and diapedesis, and granulocyte adhesion and diapedesis reflects the tumor's ability to manipulate the immune system and promote an inflammatory microenvironment conducive to cancer progression. G-protein coupled receptor signaling  plays a critical role in tumor survival, proliferation, and metastasis. 
+- In upregulated genes, the top three GO biological process are included behavior,  cell adhesion and biological adhesion and their upregulation is highly relevant in lung cancer because these mechanisms enable tumor cells to become invasive, migrate to distant sites, and ultimately lead to metastasis which is a major cause of lung cancer mortality
 
 
 - On the other hand, in cases of down regulated genes, the  top biological processes are cell-cell signaling, nuclear division, and mitosis in lung adenocarcinoma (LUAD) indicates disruptions in key regulatory pathways that control cellular communication, cell division, and proliferation. 
-
-- Top enrichment pathways for downregulated genes are inhibition of matrix metalloproteinases and  downregulation of this inhibitors allows for increased tumor invasion and metastasis , intrinsic prothrombin activation pathway closely linked to tumor microenvironment.
 
 
 ![Upregulated_genes_EA](https://github.com/user-attachments/assets/fef42a14-417a-45a3-b8fc-ee42c32bd3c2)
