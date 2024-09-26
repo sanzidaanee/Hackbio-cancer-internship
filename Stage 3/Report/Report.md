@@ -19,23 +19,16 @@ ML Python Code: (https://github.com/sanzidaanee/Hackbio-cancer-internship/blob/m
 
 ## Introduction
 
-Lung adenocarcinoma represents a histopathological subtype of non-small cell lung cancer (NSCLC) and has various forms, such as solid, acinar, lepidic, papillary, and micropapillary subtypes [1]. This subtype comprises nearly half of all lung cancer cases [2]. It originates from the glandular epithelial cells that line the alveoli of the lungs and is characterized by the formation of glandular structures or mucin production[3].
-
-It has many risk factors, including smoking, air pollution, genetic predisposition, occupational hazards, and exposure to substances such as silica, asbestos, diesel exhaust, and heavy metals [4]. In the recent advancements of bioinformatics, novel approaches have been developed for identifying potential drug targets for this cancer subtype [5].
+Lung adenocarcinoma represents a histopathological subtype of non-small cell lung cancer (NSCLC) and has various forms, such as solid, acinar, lepidic, papillary, and micropapillary subtypes [1]. This subtype comprises nearly half of all lung cancer cases [2]. It originates from the glandular epithelial cells that line the alveoli of the lungs and is characterized by the formation of glandular structures or mucin production[3]. 
 
 ## Dataset
 
-The lung adenocarcinoma (LUAD) is one of the 3 lung tumors studied by The Cancer Genomic Atlas (TCGA) through its lung cancer research. By June 2015, 521 LUAD samples had been analyzed, and the data had been uploaded to the TCGA data portal. A subset of 230 tumors was the subject of the TCGA lung cancer report for LUAD [6]. 
+The lung adenocarcinoma (LUAD) is one of the 3 lung tumors studied by The Cancer Genomic Atlas (TCGA) through its lung cancer research. By June 2015, 521 LUAD samples had been analyzed, and the data had been uploaded to the TCGA data portal. A subset of 230 tumors was the subject of the TCGA lung cancer report for LUAD [4]. 
 
 
 ### Download data
 
 TCGAbiolinks is an R/Bioconductor package designed to facilitate the retrieval, analysis, and integration of data from The Cancer Genome Atlas (TCGA) and other Genomic Data Commons (GDC) resources.
-
-
-### Data type
-
-The query searches the  TCGA-LUAD (Lung Adenocarcinoma) dataset with open-access RNA-seq gene expression data using  STAR - Counts refers to the Spliced Transcripts Alignment to a Reference (STAR) alignment method, which is a popular tool for aligning RNA-Seq reads to a reference genome and pulls raw reads counts from primary tumor tissue (tumor) and solid tissue normal (normal tissue adjacent to the tumor). 
 
 ## Data Preprocessing
 
@@ -56,7 +49,6 @@ Metadata is important for exploring and making meaningful insights from the larg
 - Normalization in RNA-Seq data is used to adjust raw read counts to account for various biases and ensure that gene expression levels can be accurately compared across different samples.
 
 - The gene length normalization method is used to account for the fact that genes have different lengths, and longer genes are more likely to have higher read counts simply because there is more of the gene to be sequenced. 
-- To ensure that the observed RNA-Seq counts reflect actual expression levels rather than just gene length, normalization by gene length adjusts the raw counts to account for these differences.
 
 
 #### Filtering
@@ -71,7 +63,7 @@ Metadata is important for exploring and making meaningful insights from the larg
 ### Differential Expression Analysis
 
 
-Differential expression analysis is a fundamental technique used to identify changes in gene expression between different biological conditions like healthy or diseased situations. By analyzing the RNA-seq data can identify the up and down regulated genes that respond to specific conditions or treatments [7]. 
+Differential expression analysis is a fundamental technique used to identify changes in gene expression between different biological conditions like healthy or diseased situations. By analyzing the RNA-seq data can identify the up and down regulated genes that respond to specific conditions or treatments [5]. 
 
 When the upregulated and downregulated genes are expressed in tumor or healthy cells indicate that if a gene is expressed in a cancer cell but not in healthy normal tissue, then that gene can be used as a potential biomarker to detect early cancer and drugs can be identified to target that gene.
 
@@ -81,8 +73,6 @@ When the upregulated and downregulated genes are expressed in tumor or healthy c
 Enrichment analysis is used to identify biological pathways, gene sets or functional categories in a given set of genes that are associated with specific types of cancer. 
 
 Generate a bar plot to visualize the results of a functional enrichment analysis, focusing on biological processes, cellular components, molecular functions, and pathways associated with upregulated and downregulated genes. It shows the top 5 enriched GO terms (Biological Processes, Cellular Components, Molecular Functions) and pathways for a set of genes using the TCGA data. 
-
-By identifying pathways related to the biological process of cancer help to find a potential biomarker that can be used for diagnosis, prognosis, or therapeutic targets [8].
 
 
 ## Results and Visualization
@@ -144,8 +134,7 @@ Figure 2: Heatmap showing clusters on both genes and samples
 
 - On the other hand, in cases of down regulated genes, the  top biological processes are cell-cell signaling, nuclear division, and mitosis in lung adenocarcinoma (LUAD) indicates disruptions in key regulatory pathways that control cellular communication, cell division, and proliferation. 
 
-- Top enrichment pathways are inhibition of matrix metalloproteinases and  downregulation of this inhibitors allows for increased tumor invasion and metastasis , intrinsic prothrombin activation pathway closely linked to tumor microenvironment and genes involved in this pathway cell cycle control of chromosomal replication pathway leads to genomic instability, enabling the accumulation of mutations that drive lung cancer progression. 
-
+- Top enrichment pathways for downregulated genes are inhibition of matrix metalloproteinases and  downregulation of this inhibitors allows for increased tumor invasion and metastasis , intrinsic prothrombin activation pathway closely linked to tumor microenvironment.
 
 
 ![Upregulated_genes_EA](https://github.com/user-attachments/assets/fef42a14-417a-45a3-b8fc-ee42c32bd3c2)
@@ -197,12 +186,9 @@ The Random Forest model is a widely used machine learning algorithm for classifi
 1. Liang, Y., Xie, Y., Yu, H., Zhu, W., Yin, C., Zhang, X., & Dong, Z. (2023). Clinical significance of TMEM229A Q200del mutation in lung adenocarcinoma.
 2. Shiba‐Ishii, A. (2021). Significance of stratifin in early progression of lung adenocarcinoma and its potential therapeutic relevance. Pathology international, 71(10), 655-665.
 3. Herbst, R. S., Morgensztern, D., and Boshoff, C. "The biology and management of non-small cell lung cancer." Nature, vol. 553, 2018, pp. 446-454.
-4. Verma, G., Ravichandar, S., Abraham, E. A., & Sampath, S. (2024). Myriad Presentation of Adenocarcinoma Lung. Journal of Evolution of Medical and Dental Sciences, 55-57.
-5. Xie, H., Zhang, J. F., & Li, Q. (2021). Identification and analysis of genes associated with lung adenocarcinoma by integrated bioinformatics methods. Annals of human genetics, 85(3-4), 125-137.
-6. [1] The Cancer Genome Atlas. (2015). Data Portal. National Cancer Institute. https://tcga-data.nci.nih.gov/tcga/tcgaHome2.jsp
+4. The Cancer Genome Atlas. (2015). Data Portal. National Cancer Institute. https://tcga-data.nci.nih.gov/tcga/tcgaHome2.jsp
 
-7. Wang, Z., Gerstein, M., and Snyder, M. "RNA-Seq: a revolutionary tool for transcriptomics." Nature Reviews Genetics, vol. 10, no. 1, 2009, pp. 57-63.
-8. Vasudevan, A., and Siddique, H. R. "Identification of novel biomarkers for cancer diagnosis and therapy: Current status and future perspectives." Frontiers in Oncology, vol. 10, 2020, Article 890.
+5. Wang, Z., Gerstein, M., and Snyder, M. "RNA-Seq: a revolutionary tool for transcriptomics." Nature Reviews Genetics, vol. 10, no. 1, 2009, pp. 57-63.
 
 
 
