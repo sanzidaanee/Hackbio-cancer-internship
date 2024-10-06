@@ -78,15 +78,17 @@ By using biomaRt package [6] for gene annotation and TCGAbiolinks package [7] fo
 - Downregulated genes were enriched in anterior or posterior pattern formation, skeletal system development, regionalization, pattern specification process and embryonic morphogenesis indicate that these genes have better prognosis than aggressive gliomas (Fig. 4).
 
 
+![Upregulated_EA](https://github.com/user-attachments/assets/18cdcad1-9e9d-4ceb-aa31-3ac948c0f2a4)
 
-[Upregulated_EA.pdf](https://github.com/user-attachments/files/17269368/Upregulated_EA.pdf)
+
 
 
 
 
 Figure 3: Functional enrichment analysis of upregulated genes for low-grade gliomas (LGG).
 
-[Dowbregulated_EA.pdf](https://github.com/user-attachments/files/17269370/Dowbregulated_EA.pdf)
+![Downregulated_genes_EA](https://github.com/user-attachments/assets/c4a9bac8-97f1-4857-bde0-63c50fdd3851)
+
 
 
 
