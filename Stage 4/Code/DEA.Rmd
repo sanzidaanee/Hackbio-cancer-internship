@@ -1,0 +1,738 @@
+---
+title: "Differential Expression and Functional Enrichment Analysis"
+author: "Sanzida Akhter Anee"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+
+# Part1: Setup and Installation........
+
+
+## Install and load Required Packages
+
+```{r}
+if (!requireNamespace("BiocManager", quietly = TRUE))
+install.packages("BiocManager")
+BiocManager::install("TCGAbiolinks")
+BiocManager::install("edgeR")
+BiocManager::install("EDASeq")
+BiocManager::install("SummarizedExperiment")
+BiocManager::install("biomaRt")
+install.packages("dplyr")
+install.packages('gplots')
+
+```
+
+
+## Load required libraries
+
+```{r}
+library(TCGAbiolinks)            #For accessing and querying TCGA data 
+library(edgeR)                   #For differential expression analysis
+library(EDASeq)                  #Exploratory data analysis and normalization
+library(SummarizedExperiment)    #Access assay data
+library(biomaRt)                 #Access BioMart databases      
+library(dplyr)                   #Manage and manipulate data
+library(gplots)                  #Data visualize and heatmap generate
+```
+
+
+
+# Part 2: Data Preprocessing........
+
+
+## Collect the list of cancer projects from TCGA databases
+
+
+```{r}
+gdcprojects <- getGDCprojects()
+getProjectSummary('TCGA-LGG')
+?GDCquery
+```
+
+
+##Download data
+
+### Build a query to retrieve gene expression data 
+
+```{r}
+
+lggQ <- GDCquery(project = 'TCGA-LGG',
+         data.category = 'Transcriptome Profiling',
+         experimental.strategy = "RNA-Seq",
+          workflow.type = "STAR - Counts",
+          access = "open",
+          data.type = "Gene Expression Quantification"
+          )
+
+
+```
+
+
+###Downlaod query data
+
+```{r}
+GDCdownload(lggQ)
+lgg.data <- GDCprepare(lggQ)
+
+```
+
+
+## Data structure
+
+```{r}
+head(lgg.data)
+View(lgg.data)
+colnames(lgg.data)       
+nrow(lgg.data)             
+ncol(lgg.data)
+```
+
+
+## Downlod IDH mutation data 
+
+```{r}
+mutation_query <- GDCquery(
+  project = "TCGA-LGG",
+  data.category = "Simple Nucleotide Variation",
+  data.type = "Masked Somatic Mutation",
+  workflow.type = "Aliquot Ensemble Somatic Variant Merging and Masking"
+)
+
+GDCdownload(mutation_query)
+mutation_data <- GDCprepare(mutation_query)
+
+```
+
+### Mutation data with IDH stauses
+
+```{r}
+idh_mutations <- mutation_data[mutation_data$Hugo_Symbol %in% c("IDH1", "IDH2"), ]
+
+```
+
+
+## Create meta data
+
+```{r}
+colData(lgg.data)  # This will give you metadata for the columns (samples)
+
+```
+
+
+### Explore LGG data for creating metadata
+
+```{r}
+col_df <- as.data.frame(colData(lgg.data))
+head(col_df)  # To view the first few rows
+
+```
+
+
+### Explore metadata information
+
+```{r}
+lgg.data$barcode
+lgg.data$tumor_descriptor
+lgg.data$sample_id
+lgg.data$sample_type
+lgg.data$gender
+lgg.data$bcr_patient_barcode
+lgg.data$paper_IDH.status
+lgg.data$paper_Mutation.Count
+lgg.data$paper_TERT.exprssion.status
+lgg.data$paper_TERT.promoter.status
+lgg.data$paper_ATRX.status
+lgg.data$paper_IDH.specific.RNA.Expression.Cluster
+lgg.data$paper_Random.Forest.Sturm.Cluster
+
+
+```
+
+
+## Create a simple metadata for this analysis
+
+```{r}
+
+Metadata <- data.frame(  "Barcode" = lgg.data$barcode,
+                        "Tumor_Sample_Barcode" = lgg.data$bcr_patient_barcode,
+                       "tumor_type"= lgg.data$tumor_descriptor,
+                       "sample_id"= lgg.data$sample_id,
+                       "sample" = lgg.data$sample_type,
+                       "gender" = lgg.data$gender,
+                       "IDH"= lgg.data$paper_IDH.status,
+                       "Mutation" = lgg.data$paper_Mutation.Count,
+                       "TERT" = lgg.data$paper_TERT.expression.status,
+                       "TERT_status"= lgg.data$paper_TERT.promoter.status,
+                       "ATRX_status"= lgg.data$paper_ATRX.status,
+                       "RNA_cluster" = lgg.data$paper_IDH.specific.RNA.Expression.Cluster, 
+                       "Random_Forest_cluster" = lgg.data$paper_Random.Forest.Sturm.Cluster)
+
+
+```
+
+
+
+## Save a metadata to a CSV file
+
+```{r}
+# Save the metadata to a CSV file
+write.csv( Metadata, "TCGA_LGG_metadata.csv", row.names = FALSE)
+```
+
+
+
+## Matches the data set with meta data
+
+```{r}
+# View the barcodes in both datasets
+head(idh_mutations$Tumor_Sample_Barcode)  # From IDH mutation data
+head(Metadata$Tumor_Sample_Barcode)  # From RNA-Seq metadata (lgg.data)
+
+```
+
+
+
+```{r}
+# Extract the first 12 characters (Patient ID) from the IDH mutation data
+idh_mutations$Tumor_Sample_Barcode<- substr(idh_mutations$Tumor_Sample_Barcode, 1, 12)
+# Extract the first 12 characters (Patient ID) from the RNA-Seq metadata
+Metadata$Tumor_Sample_Barcode<- substr(Metadata$Tumor_Sample_Barcode, 1, 12)
+
+# Check to ensure extraction is correct
+head(idh_mutations$Tumor_Sample_Barcode)
+head(Metadata$Tumor_Sample_Barcode)
+
+```
+
+
+### Merged data 
+
+```{r}
+# Merge mutation data with RNA-Seq data
+merged_data <- merge(Metadata, idh_mutations, by = "Tumor_Sample_Barcode")
+
+
+
+```
+
+
+## Seperate  two IDH statuses
+
+```{r}
+# Filter rows corresponding to IDH1 and IDH2
+idh1_data <- merged_data[merged_data$Hugo_Symbol == "IDH1", ]
+idh2_data <- merged_data[merged_data$Hugo_Symbol == "IDH2", ]
+
+# Check the first few rows of the filtered data
+head(idh1_data)
+head(idh2_data)
+```
+
+
+## Seperate mutant and wildtype data
+
+```{r}
+# from dge_metadata_with_IDHstatus separate samples with Mutant and Wildtype
+mutant_samples <- merged_data[merged_data$IDH == "Mutant", ]
+wildtype_samples <- merged_data[merged_data$IDH == "WT", ]
+```
+
+
+
+#Part 3: Normalization........
+
+## Data normalization and filtering
+
+
+### Normalization
+
+
+
+```{r}
+lgg.raw.data <- assays(lgg.data) # select undstranded dataset
+dim(lgg.raw.data$unstranded)
+
+```
+
+
+## Explore data set
+
+```{r}
+head(lgg.data)
+
+head(colData(lgg.raw.data))
+
+```
+
+
+
+## Unstranded data set with IDH mutant
+
+```{r}
+selectedBarcodes <- c(subset(Metadata, IDH == "WT")$Barcode,
+                      subset(Metadata, IDH == "Mutant")$Barcode)
+```
+
+
+## Data structure
+
+```{r}
+selectedData <- lgg.raw.data$unstranded[, c(selectedBarcodes)]
+dim(selectedData)
+View(selectedData)
+```
+
+
+# Part 3: Normalization........
+
+## Data normalization and filtering
+
+
+# If get error before normalizing by gene length method
+
+```{r}
+# Check if selectedData is valid and not empty
+if (is.null(selectedData) || nrow(selectedData) == 0 || ncol(selectedData) == 0) {
+    stop("Error: 'selectedData' is empty or has no valid rows/columns. Please verify your input data.")
+} else {
+    print("selectedData looks good!")
+    print(dim(selectedData))  # Print the dimensions of selectedData to confirm
+}
+
+```
+
+
+
+```{r}
+# Load the geneInfoHT dataset from TCGAbiolinks package
+data(geneInfoHT, package = "TCGAbiolinks")
+
+# Check if the data is loaded correctly
+if (is.null(geneInfoHT) || nrow(geneInfoHT) == 0) {
+    stop("geneInfoHT is still empty. There may be an issue with the data loading.")
+} else {
+    print("geneInfoHT is loaded correctly.")
+    head(geneInfoHT)
+}
+
+
+```
+
+
+```{r}
+# Data normalization and filtering
+
+normData <- TCGAanalyze_Normalization(tabDF = selectedData, geneInfo = geneInfoHT, method = "geneLength")
+
+
+
+```
+
+
+```{r}
+# Assuming 'normData' is the normalized data
+write.csv(normData, "normalized_data.csv", row.names = TRUE)
+
+```
+
+
+## Filtering
+
+```{r}
+
+fildata <- TCGAanalyze_Filtering(tabDF = normData,
+                                 method = "quantile",
+                                 qnt.cut = 0.25)
+
+
+```
+
+
+
+## Dimension of filtering data
+
+```{r}
+dim(fildata)
+```
+
+
+
+#Part 4: Differential expression analysis........
+
+```{r}
+# Create a vector of barcodes for mutant and WT samples
+# Assuming you have a way to distinguish between mutant and WT samples
+selectedBarcodesMutant <- c(subset(Metadata, IDH == "WT")$Barcode)  # Replace with actual mutant barcodes
+selectedBarcodesWT <- c(subset(Metadata, IDH == "Mutant")$Barcode)      # Replace with actual WT barcodes
+
+```
+
+
+
+```{r}
+# Subset the expression matrix for mutant and WT samples
+mutantMatrix <- fildata[, selectedBarcodesMutant]
+wtMatrix <- fildata[, selectedBarcodesWT]
+
+```
+
+
+
+```{r}
+# Perform DEA between mutant and WT samples using TCGAanalyze_DEA
+dge_results <- TCGAanalyze_DEA(
+    mat1 = mutantMatrix,
+    mat2 = wtMatrix,
+    Cond1type = "Mutant",
+    Cond2type = "WT",
+    pipeline = "edgeR",      # Specify the pipeline (edgeR is a popular one)
+    fdr.cut = 0.01,          # Adjust the False Discovery Rate (FDR) cutoff
+    logFC.cut = 1            # Adjust the log Fold Change cutoff
+)
+
+```
+
+```{r}
+results.level <- TCGAanalyze_LevelTab(dge_results, "Mutant", "WT",
+                                      fildata[, selectedBarcodesMutant],
+                                    fildata[, selectedBarcodesWT] )
+
+```
+
+
+
+#Part 5: Data visualization........
+
+
+##Volcano plot
+
+```{r}
+# Already have 'results' with logFC and p-values (p.adjust)
+
+# Set thresholds for significance
+logFC_cutoff = 1      # Log Fold Change threshold
+pvalue_cutoff = 0.01  # Adjusted p-value threshold
+
+# Create a new column to classify significance
+dge_results$threshold <- ifelse(dge_results$logFC > logFC_cutoff & dge_results$PValue < pvalue_cutoff, "Upregulated",
+                    ifelse(dge_results$logFC < -logFC_cutoff & dge_results$PValue < pvalue_cutoff, "Downregulated", "Not Significant"))
+
+# Assign colors based on thresholds
+dge_results$color <- ifelse(dge_results$threshold == "Upregulated", "red",
+                        ifelse(dge_results$threshold == "Downregulated", "blue", "gray"))
+
+# Negative log10 p-values for the y-axis
+dge_results$log10_pvalue <- -log10(dge_results$PValue)
+
+# Volcano plot using base R's plot function
+plot(dge_results$logFC, dge_results$log10_pvalue,
+     pch = 16,                      # Solid points
+     col = dge_results$color,            # Colors based on significance
+     xlab = "Log Fold Change (logFC)",
+     ylab = "-log10 Adjusted P-value",
+     main = "Volcano Plot: Upregulated vs Downregulated",
+     cex = 1.2)                      # Adjust point size
+
+# Add a legend
+legend("topleft",
+       legend = c("Upregulated", "Downregulated", "Not Significant"),
+       col = c("red", "blue", "gray"),
+       pch = 16)
+
+```
+
+
+
+## Heatmap Generation
+
+
+### DEA with treatment levels
+
+```{r}
+results.level <- TCGAanalyze_LevelTab(dge_results, "Mutant", "WT",
+                                      fildata[, selectedBarcodesMutant],
+                                    fildata[, selectedBarcodesWT] )
+
+```
+
+
+
+###Data structure
+
+```{r}
+head(results.level)
+dim(results.level)
+```
+
+
+
+###Filter data with result levels
+
+```{r}
+heat.data <- fildata[rownames(results.level),]
+```
+
+
+### Data structure
+
+```{r}
+# Check the number of columns in heat.data
+ncol(heat.data)
+dim((heat.data))
+```
+
+
+
+### Length of mutant and wild type
+
+```{r}
+# Total number of WT samples
+numWT <- length(subset(Metadata, IDH == "WT")$Barcode)
+
+# Total number of Mutant samples
+numMutant <- length(subset(Metadata, IDH == "Mutant")$Barcode)
+
+# Print the results
+cat("Total number of WT samples:", numWT, "\n")
+cat("Total number of Mutant samples:", numMutant, "\n")
+
+```
+
+
+
+###Select plot color
+
+
+```{r}
+# Define mutation types
+mutation.type <- c(rep("Mutant", 419), rep("WT", 94))
+
+# Initialize an empty vector for colors
+ccodes <- c()
+
+# Iterate over mutation.type and assign colors based on the type
+for (i in mutation.type) {
+  if(i == "Mutant") {
+    ccodes <- c(ccodes, "red")  # Red for Mutant
+  } else {
+    ccodes <- c(ccodes, "blue")  # Blue for WT
+  }
+}
+
+# Check the output
+print(ccodes)
+
+```
+
+
+
+```{r}
+# Check the length of ccodes (which should match the number of columns in heat.data)
+length(ccodes)
+
+```
+
+
+
+```{r}
+# Example: Suppose have two groups, "WT" and "Mutant"
+group <- c(rep("WT", 94), rep("Mutant", 419))  # Adjust this based on your column grouping
+
+# Assign colors to these groups (make sure the length matches the number of columns in heat.data)
+Colcolor <- ifelse(group == "WT", "blue", "red")
+
+```
+
+
+## Heatmap 
+
+```{r}
+# Generate heatmap with clustering both col and row
+# Save the plot to a PNG file with larger dimensions
+png("heatmap_output2.png", width = 1000, height = 800)
+heatmap.2(
+  x = as.matrix(heat.data),
+  col = hcl.colors(10, palette = "Blue-Red 2"),
+  Rowv = TRUE,              # Disable row clustering
+  Colv = TRUE,               # Enable column clustering
+  scale = "row",
+  sepcolor = "block",
+  trace = "none",
+  key = TRUE,
+  dendrogram = "both",         # Cluster columns only (no rows)
+  cexRow = 0.5, 
+  cexCol = 1,              # Define column text size
+  main = "Heatmap of Mutant vs WT",
+  na.color = "black",
+  ColSideColors = ccodes
+)
+```
+
+
+
+```{r}
+head(results.level$logFC)  # Preview logFC values
+
+```
+
+
+
+
+
+
+#Part 6: Functional Enrichment Analysis.......
+
+
+## LogFC and pvalue 
+
+```{r}
+# Set thresholds for significance
+logFC_cutoff = 1      # Log Fold Change threshold
+pvalue_cutoff = 0.01  # Adjusted p-value threshold
+```
+
+
+
+```{r}
+# Set thresholds for significance
+logFC_cutoff = 1      # Log Fold Change threshold
+pvalue_cutoff = 0.01  # Adjusted p-value threshold
+
+# Create a new column to classify significance
+dge_results$threshold <- ifelse(dge_results$logFC > logFC_cutoff & dge_results$PValue < pvalue_cutoff, "Upregulated",
+                    ifelse(dge_results$logFC < -logFC_cutoff & dge_results$PValue < pvalue_cutoff, "Downregulated", "Not Significant"))
+```
+
+
+## Gene set
+
+```{r}
+upreg_genes <- rownames(subset(results.level, logFC > 1))
+downreg_genes <- rownames(subset(results.level, logFC< -1))
+```
+
+
+
+```{r}
+print(upreg_genes)
+print(downreg_genes)
+```
+
+
+```{r}
+length(upreg_genes)
+length(downreg_genes)
+```
+
+
+
+## Gene annotation
+
+```{r}
+mart <- useMart(biomart = "ensembl", dataset = "hsapiens_gene_ensembl")
+```
+
+
+
+```{r}
+#Convert ensembel IDs to geen IDs using biomaRt
+
+mart <- useMart(biomart = "ensembl", dataset = "hsapiens_gene_ensembl")
+
+upreg_genes <- getBM(attributes = c("ensembl_gene_id", "hgnc_symbol"),
+                            filters = "ensembl_gene_id",
+                            values = upreg_genes,
+                            mart = mart)$hgnc_symbol
+```
+
+
+```{r}
+head(upreg_genes)
+print(downreg_genes)
+
+```
+
+
+```{r}
+downreg_genes <- getBM(attributes = c("ensembl_gene_id", "hgnc_symbol"),
+                            filters = "ensembl_gene_id",
+                            values = downreg_genes,
+                            mart = mart)$hgnc_symbol
+                                                    
+
+```
+
+
+
+```{r}
+head(downreg_genes)
+length(downreg_genes)
+```
+
+
+
+```{r}
+View(upreg_genes)
+print(downreg_genes)
+```
+
+
+
+```{r}
+write.csv(upreg_genes, "upregulated_genes_ei.csv", row.names = FALSE)
+write.csv(downreg_genes, "downregulated_genes_ei.csv", row.names = FALSE)
+```
+
+
+## Enrichment analysis
+
+```{r}
+upreg_EA <- TCGAanalyze_EAcomplete(TFname = "upregulated",
+                                   upreg_genes)
+downreg_EA <- TCGAanalyze_EAcomplete(TFname = "downregulated",
+                                   downreg_genes)
+```
+
+
+
+## Enrichment analysis visualization
+
+##Upregulated genes
+
+```{r}
+TCGAvisualize_EAbarplot(tf = rownames(upreg_EA$ResBP),
+                      GOBPTab = upreg_EA$ResBP,
+                      GOCCTab = upreg_EA$ResCC,
+                      GOMFTab = upreg_EA $ ResMF,
+                      PathTab = upreg_EA $ResPat,
+                      nRGTab = upreg_genes,
+                      nBar =5,
+                      text.size = 2,
+                      fig.width =30,
+                      fig.height =15)
+```
+
+
+
+##Downregulated genes
+
+```{r}
+TCGAvisualize_EAbarplot(tf = rownames(downreg_EA$ResBP),
+                      GOBPTab = downreg_EA$ResBP,
+                      GOCCTab = downreg_EA$ResCC,
+                      GOMFTab = downreg_EA $ ResMF,
+                      PathTab = downreg_EA $ResPat,
+                      nRGTab = downreg_genes,
+                      nBar =5,
+                      text.size = 2,
+                      fig.width =30,
+                      fig.height =15)
+```
+
+
+
+
+
+
