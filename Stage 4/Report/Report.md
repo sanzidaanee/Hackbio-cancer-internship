@@ -10,15 +10,17 @@ Authors (@slack): Sanzida Akhter Anee (@Sanzida), Sk Arif (@arif_shaikh), Nada G
 ## Link
 
 #### Github repo 
-DE_Analysis R Code: 
+(https://github.com/sanzidaanee/Hackbio-cancer-internship/tree/main/Stage%204)
 
+### Github code link
+
+DE_Analysis R Code: (https://github.com/sanzidaanee/Hackbio-cancer-internship/blob/main/Stage%204/Code/DEA.Rmd)
 
 ML Python Code: 
 
-
-#### Github code link
-
 #### Link of dataset
+
+(https://github.com/sanzidaanee/Hackbio-cancer-internship/tree/main/Stage%204/Data)
 
 ## Introduction
 
@@ -50,15 +52,22 @@ By using biomaRt package [6] for gene annotation and TCGAbiolinks package [7] fo
 
  - Then from 34539 filtered genes, after DE analysis, we reported 5916 genes.
 
-  - We screened all the DEGs using  using log2FC = 0.01 and p-value = 1 as the threshold and showed them as volcano plots (Fig 1).
+  - We screened all the DEGs using  using log2FC = 0.01 and p-value = 1 as the threshold and showed them as volcano plots (Fig. 1).
 
 
-  Figure 1: Volcano plot of low-grade gliomas (LGG) dataset visualizes gene expression data. X-axis shows log2-fold change and Y-axis shows adjusted p-value. Red points indicate upregulated and blue dots indicate downregulated genes.
+    ![Volcano_plot](https://github.com/user-attachments/assets/1573fed5-a214-4d91-a462-41e785319af3)
+
+
+
+ Figure 1: Volcano plot of low-grade gliomas (LGG) dataset visualizes gene expression data. X-axis shows log2-fold change and Y-axis shows adjusted p-value. Red points indicate upregulated and blue dots indicate downregulated genes.
 
  - Following overlapping, we identified 1681 upregulated and 4235 downregulated common genes
  - The results of DE with 5916 genes were  plotted as a heatmap (Fig).
 
  - Results from heatmap show the clustering of upregulated genes is expressed at a higher level in mutant IDH than wildtype and this result is consistent with the other researcher’s findings (Fig. 2).
+
+   ![heatmap_output](https://github.com/user-attachments/assets/782ec6fe-4585-4e67-99a7-0cc18bb63851)
+
 
  Figure 2: Hierarchical clustering heat map of 5916 DEGs from IDH mutant and wild type for low-grade gliomas (LGG) samples, Red and green indicate high and low expression genes, respectively.		
 
@@ -70,15 +79,16 @@ By using biomaRt package [6] for gene annotation and TCGAbiolinks package [7] fo
 
 
 
-
-
-
-
+[Upregulated_EA.pdf](https://github.com/user-attachments/files/17269368/Upregulated_EA.pdf)
 
 
 
 
 Figure 3: Functional enrichment analysis of upregulated genes for low-grade gliomas (LGG).
+
+[Dowbregulated_EA.pdf](https://github.com/user-attachments/files/17269370/Dowbregulated_EA.pdf)
+
+
 
 Figure 4: Functional enrichment analysis of downregulated genes for low-grade gliomas (LGG).
 
