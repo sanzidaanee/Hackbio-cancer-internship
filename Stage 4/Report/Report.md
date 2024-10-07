@@ -47,11 +47,11 @@ By using biomaRt package [6] for gene annotation and TCGAbiolinks package [7] fo
 
 ### Machine Learning Model
 
-We used feature selection, machine learning and KNN modelling to predict IDH status
+We used feature selection, machine learning and KNN modelling to predict IDH status.
 
-Random Forest: We used  Recursive Feature Elimination (RFE) to select the top 100 features, trained a Random Forest classifier on the selected features, and evaluated model performance with accuracy, confusion matrix, and classification report.
+Random Forest: We used  Recursive Feature Elimination (RFE) to select the top 100 features, trained a Random Forest classifier on the selected features, and evaluated model performance with accuracy, confusion matrix, and classification report [8].
 
-K-Nearest Neighbors (KNN): We applied variance thresholding for feature selection, trained a KNN model, and evaluated predictions with accuracy and performance metrics.
+K-Nearest Neighbors (KNN): We applied variance thresholding for feature selection, trained a KNN model, and evaluated predictions with accuracy and performance metrics [8].
 
 ## Results 
 
