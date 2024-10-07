@@ -57,10 +57,12 @@ K-Nearest Neighbors (KNN): We applied variance thresholding for feature selectio
 
 ### Differential expression analysis
 
- - To decipher the heterogeneity within IDH-mutant for low-grade gliomas, we filtered 34539 genes with 419 wild types and 94 mutant samples from 60660 genes.
+ - To decipher the heterogeneity within IDH-mutant for low-grade gliomas, we filtered 34539 genes with 419 wild types and 94 mutant samples 
+   from 60660 genes.
 
- - Then from 34539 filtered genes, after DE analysis, we reported 5916 genes.
-
+ - Then from 34539 filtered genes, after DE analysis, identify 5,916 differentially expressed genes (DEGs) and revealing significant 
+   clustering of upregulated genes in IDH-mutant samples. This result aligns with the findings from the referenced paper.
+   
   - We screened all the DEGs using  using log2FC = 0.01 and p-value = 1 as the threshold and showed them as volcano plots (Fig. 1).
 
 
@@ -70,11 +72,12 @@ K-Nearest Neighbors (KNN): We applied variance thresholding for feature selectio
 
  Figure 1: Volcano plot of low-grade gliomas (LGG) dataset visualizes gene expression data. X-axis shows log2-fold change and Y-axis shows adjusted p-value. Red points indicate upregulated and blue dots indicate downregulated genes.
 
- - Following overlapping, we identified 1681 upregulated and 4235 downregulated common genes
+ - Following overlapping, we identified 1681 upregulated and 4235 downregulated common genes.
  - The results of DE with 5916 genes were  plotted as a heatmap (Fig. 2).
+ - Results from heatmap show the clustering of upregulated genes is expressed at a higher level in mutant IDH than wildtype. Similarly  the 
+   paper also emphasizes the role of IDH mutation in driving genome-wide hypermethylation and unique gene expression profiles.
 
- - Results from heatmap show the clustering of upregulated genes is expressed at a higher level in mutant IDH than wildtype and this result is consistent with the other researcher’s findings (Fig. 2).
-
+   
    ![heatmap_output](https://github.com/user-attachments/assets/782ec6fe-4585-4e67-99a7-0cc18bb63851)
 
 
@@ -85,7 +88,7 @@ K-Nearest Neighbors (KNN): We applied variance thresholding for feature selectio
  - Upregulated genes  were enriched in synaptic transmission, cell-cell signaling, transmission of nerve impulse, homophilic cell adhesion and cell-cell adhesion might  tend to have a better prognosis compared to more aggressive gliomas (Fig. 3)
 
 - Downregulated genes were enriched in anterior or posterior pattern formation, skeletal system development, regionalization, pattern specification process and embryonic morphogenesis indicate that these genes have better prognosis than aggressive gliomas (Fig. 4).
-
+- The reference paper also notes that the significant clustering based on IDH status that differentiates between glioma subtypes. 
 
 ![Upregulated_EA](https://github.com/user-attachments/assets/18cdcad1-9e9d-4ceb-aa31-3ac948c0f2a4)
 
@@ -115,9 +118,9 @@ Figure 4: Functional enrichment analysis of downregulated genes for low-grade gl
 
 ## Conclusion 
 
- - The results confirm IDH status as the major determinant of the molecular footprints of low grade gliomas. 
- - Mutant LGGs, particularly those with IDH mutations, shows unique gene expression profiles compared to wildtype tumors
- - Enriched pathways suggest that IDH-mutant gliomas might associated with more aggressive, invasive behavior of tumor than wild type
+ - Both studies underscore IDH status as a primary factor influencing glioma heterogeneity.
+ - Mutant LGGs, particularly those with IDH mutations, shows unique gene expression profiles compared to wildtype tumors.
+ - Enriched pathways suggest that IDH-mutant gliomas might associated with more aggressive, invasive behavior of tumor than wild type.
  - The Random Forest model significantly outperformed the K-Nearest Neighbors (KNN) model, especially in classifying "WT" samples, 
     demonstrating superior overall accuracy and reliability in distinguishing between mutant and wild-type gliomas.
 
