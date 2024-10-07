@@ -108,7 +108,7 @@ Figure 3: Functional enrichment analysis of upregulated genes for low-grade glio
 Figure 4: Functional enrichment analysis of downregulated genes for low-grade gliomas (LGG).
 
 
-## Machine learning models
+### Machine learning models
 
  - The Random Forest model achieved an impressive 99% accuracy, with only one misclassification. Precision, recall, and F1-scores were high for both classes, especially for "Mutant" (precision: 0.99, recall: 1.00) and "WT" (precision: 1.00, recall: 0.96), demonstrating robust performance.
 
@@ -130,7 +130,6 @@ Figure 4: Functional enrichment analysis of downregulated genes for low-grade gl
 ## References
 
 1. Ahir, B. K., Engelhard, H. H., & Lakka, S. S. (2020). Tumor development and angiogenesis in adult brain tumors: glioblastoma. Molecular neurobiology, 57, 2461-2478.
-
 2. What Makes a Brain Tumor High-Grade or Low-Grade? David Reardon, MD. April 3, 2018. https://blog.dana-farber.org/insight/2018/04/makes-brain-tumor-high-grade-low-grade/.
 3. Nakhate, V., Lasica, A. B., & Wen, P. Y. (2024). The Role of Mutant IDH Inhibitors in the Treatment of Glioma. Current Neurology and Neuroscience Reports, 1-13.
 4. The Cancer Genome Atlas. (2015). Data Portal. National Cancer Institute. https://tcga-data.nci.nih.gov/tcga/tcgaHome2.jsp
