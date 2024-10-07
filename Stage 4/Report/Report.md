@@ -71,7 +71,7 @@ K-Nearest Neighbors (KNN): We applied variance thresholding for feature selectio
  Figure 1: Volcano plot of low-grade gliomas (LGG) dataset visualizes gene expression data. X-axis shows log2-fold change and Y-axis shows adjusted p-value. Red points indicate upregulated and blue dots indicate downregulated genes.
 
  - Following overlapping, we identified 1681 upregulated and 4235 downregulated common genes
- - The results of DE with 5916 genes were  plotted as a heatmap (Fig).
+ - The results of DE with 5916 genes were  plotted as a heatmap (Fig. 2).
 
  - Results from heatmap show the clustering of upregulated genes is expressed at a higher level in mutant IDH than wildtype and this result is consistent with the other researcher’s findings (Fig. 2).
 
