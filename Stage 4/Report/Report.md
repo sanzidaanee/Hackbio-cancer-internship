@@ -18,6 +18,9 @@ DE_Analysis R Code: (https://github.com/sanzidaanee/Hackbio-cancer-internship/bl
 
 ML Python Code: 
 
+KNN- (https://github.com/sanzidaanee/Hackbio-cancer-internship/blob/main/Stage%204/Code/KNN.ipynb)
+RF- (https://github.com/sanzidaanee/Hackbio-cancer-internship/blob/main/Stage%204/Code/RandomForest.ipynb)
+
 #### Link of dataset
 
 (https://github.com/sanzidaanee/Hackbio-cancer-internship/tree/main/Stage%204/Data)
@@ -43,6 +46,12 @@ Using edgeR package [5], differentially expressed genes were discovered. We used
 By using biomaRt package [6] for gene annotation and TCGAbiolinks package [7] for pathway enrichment analysis at gene ontology biological process level.
 
 ### Machine Learning Model
+
+We used feature selection, machine learning and KNN modelling to predict IDH status
+
+Random Forest: We used  Recursive Feature Elimination (RFE) to select the top 100 features, trained a Random Forest classifier on the selected features, and evaluated model performance with accuracy, confusion matrix, and classification report.
+
+K-Nearest Neighbors (KNN): We applied variance thresholding for feature selection, trained a KNN model, and evaluated predictions with accuracy and performance metrics.
 
 ## Results 
 
@@ -97,14 +106,20 @@ Figure 4: Functional enrichment analysis of downregulated genes for low-grade gl
 
 ## Machine learning models
 
+ - The Random Forest model achieved an impressive 99% accuracy, with only one misclassification. Precision, recall, and F1-scores were high for both classes, especially for "Mutant" (precision: 0.99, recall: 1.00) and "WT" (precision: 1.00, recall: 0.96), demonstrating robust performance.
+
+ - The K-Nearest Neighbors (KNN) model had an accuracy of 83%. It performed well for "Mutant" samples (precision: 0.82, recall: 0.99) but struggled with "WT" samples, achieving a recall of 0.35 and F1-score of 0.50. This highlights significant misclassifications and a need for improvement in classifying "WT."
+
+
 
 
 ## Conclusion 
 
-  - The results confirm IDH status as the major determinant of the molecular footprints of low grade gliomas. 
+ - The results confirm IDH status as the major determinant of the molecular footprints of low grade gliomas. 
  - Mutant LGGs, particularly those with IDH mutations, shows unique gene expression profiles compared to wildtype tumors
  - Enriched pathways suggest that IDH-mutant gliomas might associated with more aggressive, invasive behavior of tumor than wild type
-
+ - The Random Forest model significantly outperformed the K-Nearest Neighbors (KNN) model, especially in classifying "WT" samples, 
+    demonstrating superior overall accuracy and reliability in distinguishing between mutant and wild-type gliomas.
 
 
 
@@ -118,6 +133,7 @@ Figure 4: Functional enrichment analysis of downregulated genes for low-grade gl
 5. McCarthy DJ, Chen Y, Smyth GK (2012). "Differential expression analysis of multifactor RNA-Seq experiments with respect to biological variation." Nucleic Acids Research, 40(10), 4288-4297. DOI:10.1093/nar/gks042.
 6. Durinck, S., Spellman, P.T., Birney, E., & Huber, W. (2009). Mapping identifiers for the integration of genomic datasets with the R/Bioconductor package biomaRt. Bioinformatics, 25(18), 2410-2411. https://doi.org/10.1093/bioinformatics/btp515.
 7. Colaprico, A., Silva, T. C., Olsen, C., Garofano, L., Cava, C., Garolini, D., ... & Ceccarelli, M. (2016). TCGAbiolinks: an R/Bioconductor package for integrative analysis of TCGA data. Nucleic Acids Research, 44(8), e71. https://doi.org/10.1093/nar/gkv1507.
+8. Liaw, A., & Wiener, M. (2002). Classification and Regression by randomForest. R News, 2(3), 18-22.
 
 
 
