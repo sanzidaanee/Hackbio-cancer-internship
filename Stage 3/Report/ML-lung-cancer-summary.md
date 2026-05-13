@@ -40,37 +40,6 @@ This module applies supervised machine learning to classify lung tissue samples 
 <img width="2356" height="2896" alt="ml_workflow_diagram" src="https://github.com/user-attachments/assets/66ff2622-fed0-4a99-be3d-76bcb61bd4ad" />
 
 
-```
-
-Raw Gene Expression Data
-        │
-        ▼
-Metadata Alignment (Barcode Indexing)
-        │
-        ▼
-Common Sample Subsetting
-        │
-        ▼
-Target Label Definition
-        │
-        ▼
-Feature Selection (Recursive Feature Elimination - RFE)
-        │
-        ▼
-Train/Test Split
-        │
-        ▼
-Random Forest Classifier Training
-        │
-        ▼
-Model Evaluation (Accuracy, Confusion Matrix, F1-Score)
-        │
-        ▼
-Biomarker Gene Identification
-```
-
----
-
 ## ⚙️ Methods
 
 ### 1. Data Preparation
