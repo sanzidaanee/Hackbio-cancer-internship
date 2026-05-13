@@ -136,9 +136,9 @@ plot(results$logFC, -log10(results$PValue),
 
 ### Figure 1 — Volcano Plot of Differential Expression (Primary Tumor vs Solid Tissue Normal)
 
-<p align="center">
-  <img src="./Images/Volcano_Plot.png" width="650" alt="Volcano Plot showing upregulated (red) and downregulated (blue) genes in LUAD"/>
-</p>
+<img width="1400" height="865" alt="Volcano Plot" src="https://github.com/user-attachments/assets/c89a3b32-4549-4ec1-a01f-37ed04945e21" />
+
+
 
 > **Figure 1.** Volcano plot displaying differential gene expression between Primary Tumor (n = 20) and Solid Tissue Normal (n = 20) TCGA-LUAD samples. The x-axis shows log₂ fold change and the y-axis shows −log₁₀ adjusted p-value. **Red dots** (right, logFC > 1) represent 3,277 significantly upregulated genes in tumor tissue — candidate oncogenes and invasion drivers. **Blue dots** (left, logFC < −1) represent 6,357 downregulated genes — including potential tumor suppressors and cell cycle regulators. Significance threshold: FDR < 0.01, |logFC| > 1.
 
@@ -156,9 +156,8 @@ heatmap.2(
 )
 ```
 
-<p align="center">
-  <img src="./Images/Heatmap.png" width="700" alt="Heatmap showing clear separation between tumor and normal tissue samples"/>
-</p>
+<img width="1000" height="800" alt="Heatmap" src="https://github.com/user-attachments/assets/6cbb4c04-077b-46ed-bee4-9236509559a1" />
+
 
 > **Figure 2.** Heatmap of all statistically significant DEGs (FDR < 0.01) across 40 samples. The dendrogram (top) clusters samples by expression similarity — **blue bars** denote Solid Tissue Normal; **red bars** denote Primary Tumor. The two groups separate into clearly distinct branches, confirming strong transcriptional differences between conditions. Red cells indicate high expression in that sample; blue cells indicate low expression. Genes expressed highly in tumor but lowly in normal are candidate oncogenes; the reverse pattern identifies candidate tumor suppressors.
 
@@ -195,9 +194,9 @@ TCGAvisualize_EAbarplot(
 
 ### Figure 3 — Functional Enrichment of Upregulated Genes (n = 3,277)
 
-<p align="center">
-  <img src="./Images/Upregulated_genes_EA.png" width="700" alt="GO and KEGG enrichment barplots for upregulated genes"/>
-</p>
+
+[Upregulated_genes_EA.pdf](https://github.com/user-attachments/files/27733208/Upregulated_genes_EA.pdf)
+
 
 > **Figure 3.** Functional enrichment analysis of 3,277 upregulated genes across four categories: GO Biological Process, GO Cellular Component, GO Molecular Function, and KEGG Pathways. Top enriched biological processes include **cell adhesion**, **biological adhesion**, and **behavior** — pathways directly associated with tumor invasion, migration, and metastatic spread in LUAD. Top KEGG pathways include agranulocyte/granulocyte adhesion and diapedesis and GPCR signaling, consistent with immune evasion and pro-tumorigenic signaling. Bar length represents gene ratio; color depth reflects −log₁₀(FDR).
 
@@ -205,9 +204,8 @@ TCGAvisualize_EAbarplot(
 
 ### Figure 4 — Functional Enrichment of Downregulated Genes (n = 6,357)
 
-<p align="center">
-  <img src="./Images/Downregulated_genes_EA.png" width="700" alt="GO and KEGG enrichment barplots for downregulated genes"/>
-</p>
+[Downregulated_genes_EA.pdf](https://github.com/user-attachments/files/27733227/Downregulated_genes_EA.pdf)
+
 
 > **Figure 4.** Functional enrichment analysis of 6,357 downregulated genes. Top enriched biological processes include **cell-cell signaling**, **nuclear division**, and **mitosis** — indicating disruption of normal cell cycle control and intercellular communication in LUAD. Top KEGG pathways include cell cycle control of chromosomal replication and mitotic roles of Polo-like kinase, consistent with loss of cell cycle checkpoints in cancer. Downregulation of these processes suggests dysregulated proliferation and impaired tissue homeostasis.
 
