@@ -125,7 +125,5 @@ Trains a Random Forest classifier on normalized gene expression data to classify
 | Name | Contributions |
 |------|-------------|
 | Sanzida Akhter Anee | DEG and ML Analysis and report writing |
-
 | Stéphie Raveloson | ML workflow |
-
 | Idahosa Clinton | ML analysis |
