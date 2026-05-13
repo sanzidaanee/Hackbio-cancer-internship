@@ -195,7 +195,7 @@ TCGAvisualize_EAbarplot(
 ### Figure 3 — Functional Enrichment of Upregulated Genes (n = 3,277)
 
 
-[Upregulated_genes_EA.pdf](https://github.com/user-attachments/files/27733208/Upregulated_genes_EA.pdf)
+<img width="7500" height="3750" alt="Upregulated_genes_EA" src="https://github.com/user-attachments/assets/8c3c513d-d4b7-4f93-94b5-9b91186de0e6" />
 
 
 > **Figure 3.** Functional enrichment analysis of 3,277 upregulated genes across four categories: GO Biological Process, GO Cellular Component, GO Molecular Function, and KEGG Pathways. Top enriched biological processes include **cell adhesion**, **biological adhesion**, and **behavior** — pathways directly associated with tumor invasion, migration, and metastatic spread in LUAD. Top KEGG pathways include agranulocyte/granulocyte adhesion and diapedesis and GPCR signaling, consistent with immune evasion and pro-tumorigenic signaling. Bar length represents gene ratio; color depth reflects −log₁₀(FDR).
@@ -204,7 +204,7 @@ TCGAvisualize_EAbarplot(
 
 ### Figure 4 — Functional Enrichment of Downregulated Genes (n = 6,357)
 
-[Downregulated_genes_EA.pdf](https://github.com/user-attachments/files/27733227/Downregulated_genes_EA.pdf)
+<img width="7500" height="3750" alt="Downregulated_genes_EA" src="https://github.com/user-attachments/assets/085b810e-565a-4ae8-b8e7-c15ac08bc40c" />
 
 
 > **Figure 4.** Functional enrichment analysis of 6,357 downregulated genes. Top enriched biological processes include **cell-cell signaling**, **nuclear division**, and **mitosis** — indicating disruption of normal cell cycle control and intercellular communication in LUAD. Top KEGG pathways include cell cycle control of chromosomal replication and mitotic roles of Polo-like kinase, consistent with loss of cell cycle checkpoints in cancer. Downregulation of these processes suggests dysregulated proliferation and impaired tissue homeostasis.
