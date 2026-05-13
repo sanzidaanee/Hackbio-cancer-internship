@@ -36,6 +36,10 @@ This module applies supervised machine learning to classify lung tissue samples 
 
 ## 🔬 Workflow
 
+
+<img width="2356" height="2896" alt="ml_workflow_diagram" src="https://github.com/user-attachments/assets/66ff2622-fed0-4a99-be3d-76bcb61bd4ad" />
+
+
 ```
 
 Raw Gene Expression Data
