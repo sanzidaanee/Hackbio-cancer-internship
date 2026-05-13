@@ -29,7 +29,6 @@ The Cancer Genome Atlas (TCGA) LUAD dataset was used. By June 2015, 521 LUAD sam
 ## Full Project Workflow
 
 <img width="2356" height="3256" alt="workflow_diagram (1)" src="https://github.com/user-attachments/assets/83e126ad-ac26-4013-ab04-b7c02001606a" />
-
 The pipeline begins with the TCGA-LUAD dataset and a shared preprocessing step. It then splits into two parallel branches — the **DEG branch (R)** performs differential expression, visualization, and enrichment analysis, while the **ML branch (Python)** performs classification, feature selection, and model evaluation. Both branches converge into a combined key results section identifying the final biomarker candidates.
 
 ---
