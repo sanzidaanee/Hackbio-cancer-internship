@@ -1,60 +1,136 @@
+# Identify Potential Biomarkers for Cancer Detection by Analyzing Differential Expression and Machine Learning Models
 
-# Identify Potential Biomarkers for Cancer Detection by Using Differential Expression and Machine Learning Models
+**HackBio Cancer Bioinformatics Internship — Stage 3**
 
-
-
-## Objective
-
-The main objective of this study is to identify potential  biomarkers for early lung cancer detection by analyzing TCGA dataset with differential gene expression data and predict cancer by using machine learning models. The aim is to find key genes that are significantly expressed in early-stage lung cancers compared to normal tissue. 
-
+---
 
 ## Introduction
 
-Lung adenocarcinoma represents a histopathological subtype of non-small cell lung cancer (NSCLC) and has various forms, such as solid, acinar, lepidic, papillary, and micropapillary subtypes [1]. This subtype comprises nearly half of all lung cancer cases [2]. It originates from the glandular epithelial cells that line the alveoli of the lungs and is characterized by the formation of glandular structures or mucin production[3].
+Lung adenocarcinoma (LUAD) is the most common histological subtype of non-small cell lung cancer (NSCLC), representing nearly half of all lung cancer cases. It originates from glandular epithelial cells lining the alveoli and is characterized by glandular structures or mucin production. Early and accurate detection remains a major clinical challenge.
 
-It has many risk factors, including smoking, air pollution, genetic predisposition, occupational hazards, and exposure to substances such as silica, asbestos, diesel exhaust, and heavy metals [4]. In the recent advancements of bioinformatics, novel approaches have been developed for identifying potential drug targets for this cancer subtype [5].
+This project integrates **differential expression analysis (DEA)** in R with **supervised machine learning (ML)** in Python to identify gene-level biomarkers that distinguish tumor from normal lung tissue using publicly available TCGA-LUAD data.
 
+---
 
 ## Dataset
 
-The dataset is taken from The Cancer Genome Atlas (TCGA) website that consists of more than 30 different types of cancer datasets (https://portal.gdc.cancer.gov/).
+The Cancer Genome Atlas (TCGA) LUAD dataset was used. By June 2015, 521 LUAD samples had been analyzed and uploaded to the TCGA data portal. For this analysis, a balanced subset of **40 samples** (20 Primary Tumor + 20 Solid Tissue Normal) was selected.
 
-### Download data
+| Resource | Link |
+|----------|------|
+| GitHub Repository | https://github.com/sanzidaanee/Hackbio-cancer-internship/tree/main/Stage%203 |
+| DEG Analysis (R) | https://github.com/sanzidaanee/Hackbio-cancer-internship/blob/main/Stage%203/Code/DEG.Rmd |
+| ML Notebook (Python) | https://github.com/sanzidaanee/Hackbio-cancer-internship/blob/main/Stage%203/Code/ML_Lung_Cancer.ipynb |
+| Dataset | https://github.com/sanzidaanee/Hackbio-cancer-internship/tree/main/Stage%203/Data |
+| ML Results | https://github.com/sanzidaanee/Hackbio-cancer-internship/blob/main/Stage%203/Data/ml-results%20.csv |
 
-TCGAbiolinks is an R/Bioconductor package designed to facilitate the retrieval, analysis, and integration of data from The Cancer Genome Atlas (TCGA) and other Genomic Data Commons (GDC) resources.
+---
 
+## Full Project Workflow
 
-### Data type
+<p align="center">
+  <img src="./Images/workflow_diagram.png" width="820" alt="Full project workflow diagram showing DEG and ML branches"/>
+</p>
 
-The query searches the  TCGA-LUAD (Lung Adenocarcinoma) dataset with open-access RNA-seq gene expression data using  STAR - Counts refers to the Spliced Transcripts Alignment to a Reference (STAR) alignment method, which is a popular tool for aligning RNA-Seq reads to a reference genome and pulls raw reads counts from primary tumor tissue (tumor) and solid tissue normal (normal tissue adjacent to the tumor). 
+The pipeline begins with the TCGA-LUAD dataset and a shared preprocessing step. It then splits into two parallel branches — the **DEG branch (R)** performs differential expression, visualization, and enrichment analysis, while the **ML branch (Python)** performs classification, feature selection, and model evaluation. Both branches converge into a combined key results section identifying the final biomarker candidates.
 
+---
 
-## Main Workflow
+## Module 1 — Differential Expression Analysis
 
-![Snip20240924_3](https://github.com/user-attachments/assets/508de50f-4f0c-4afc-b3f9-dba0ac4e8c14)
+**Language:** R &nbsp;|&nbsp; **Tools:** `TCGAbiolinks`, `edgeR`, `biomaRt`, `gplots`  
+**Full details:** [`README_DEG_Analysis.md`](./README_DEG_Analysis.md)
 
+Identifies genes significantly differentially expressed between Primary Tumor and Solid Tissue Normal samples using a negative binomial statistical model (edgeR).
 
+| Parameter | Value |
+|-----------|-------|
+| FDR-adjusted p-value | < 0.01 |
+| Log₂ Fold Change (up) | > 1 |
+| Log₂ Fold Change (down) | < −1 |
+| Upregulated genes | **3,277** |
+| Downregulated genes | **6,357** |
 
+**Outputs:** Volcano plot · Heatmap · GO + KEGG enrichment barplots · Annotated DEG CSV files
 
+---
 
+## Module 2 — Machine Learning Classification
 
-## Conclusion 
+**Language:** Python &nbsp;|&nbsp; **Tools:** `scikit-learn`, `pandas`, `matplotlib`  
+**Full details:** [`README_ML_Lung_Cancer.md`](./README_ML_Lung_Cancer.md)
 
- - DEG analysis revealed a set of upregulated and downregulated genes in lung adenocarcinoma (LUAD), providing insight into the molecular mechanisms underlying cancer progression
+Trains a Random Forest classifier on normalized gene expression data to classify samples and rank the top 100 discriminative genes as biomarker candidates using Recursive Feature Elimination (RFE).
 
- - The subsequent enrichment analysis of these genes offers valuable information on the biological processes, molecular functions, and pathways that are potentially disrupted during tumor development
+| Parameter | Value |
+|-----------|-------|
+| Feature selection | RFE (top 100 genes) |
+| Classifier | Random Forest (100 trees) |
+| Train / Test split | 80% / 20% |
+| Overall accuracy | **1.00** |
 
- - ML models can be trained on gene expression data to  identify key biomarkers for lung cancer that are linked to prognosis and  targeted therapy
+**Outputs:** Feature importance plot · `selected_genes.csv` · `ml-results.csv`
 
+---
+
+## Key Results
+
+### Differential Expression
+
+| Category | Count |
+|----------|-------|
+| Upregulated genes | 3,277 |
+| Downregulated genes | 6,357 |
+| Total significant DEGs | 9,634 |
+
+### Functional Enrichment Highlights
+
+**Upregulated in tumor:** Cell adhesion, biological adhesion, and behavior-related processes — consistent with invasion and metastatic potential in LUAD.
+
+**Downregulated in tumor:** Cell-cell signaling, nuclear division, and mitosis — indicating disrupted cell cycle regulation and loss of normal proliferative control.
+
+### Machine Learning
+
+| Metric | Score |
+|--------|-------|
+| Overall Accuracy | 1.00 |
+| Primary Tumor F1 | 1.00 |
+| Solid Tissue Normal F1 | 1.00 |
+| Biomarker candidates (RFE) | 100 genes |
+
+> ⚠️ **Caveat:** Perfect accuracy on n = 40 samples may reflect overfitting. Validation on the full TCGA-LUAD cohort (521 samples) with k-fold cross-validation is strongly recommended.
+
+---
+
+## Conclusions
+
+- DEG analysis successfully identified thousands of dysregulated genes in LUAD, providing insight into the molecular mechanisms driving cancer progression.
+- Functional enrichment revealed biologically meaningful pathways — upregulation of adhesion/invasion and downregulation of cell cycle control — consistent with established LUAD biology.
+- The Random Forest classifier with RFE identified 100 candidate biomarker genes that perfectly separated tumor from normal samples in the test set.
+- Together, the two approaches provide complementary perspectives: DEA offers mechanistic insight while ML provides a data-driven ranking of the most diagnostically relevant genes.
+
+---
 
 ## References
 
-1. Liang, Y., Xie, Y., Yu, H., Zhu, W., Yin, C., Zhang, X., & Dong, Z. (2023). Clinical significance of TMEM229A Q200del mutation in lung adenocarcinoma.
-2. Shiba‐Ishii, A. (2021). Significance of stratifin in early progression of lung adenocarcinoma and its potential therapeutic relevance. Pathology international, 71(10), 655-665.
-3. Herbst, R. S., Morgensztern, D., and Boshoff, C. "The biology and management of non-small cell lung cancer." Nature, vol. 553, 2018, pp. 446-454.
-4. Verma, G., Ravichandar, S., Abraham, E. A., & Sampath, S. (2024). Myriad Presentation of Adenocarcinoma Lung. Journal of Evolution of Medical and Dental Sciences, 55-57.
-5. Xie, H., Zhang, J. F., & Li, Q. (2021). Identification and analysis of genes associated with lung adenocarcinoma by integrated bioinformatics methods. Annals of human genetics, 85(3-4), 125-137.
+1. Liang Y, et al. Clinical significance of TMEM229A Q200del mutation in lung adenocarcinoma. 2023.
+2. Shiba-Ishii A. Significance of stratifin in early progression of lung adenocarcinoma. *Pathology International*, 2021.
+3. Herbst RS, Morgensztern D, Boshoff C. The biology and management of non-small cell lung cancer. *Nature*, 2018.
+4. The Cancer Genome Atlas. Data Portal. NCI, 2015. https://tcga-data.nci.nih.gov/tcga/
+5. Wang Z, Gerstein M, Snyder M. RNA-Seq: a revolutionary tool for transcriptomics. *Nature Reviews Genetics*, 2009.
+6. Abdelwahab O, et al. A feature selection-based framework to identify biomarkers for cancer diagnosis. *PLOS ONE*, 2022. https://doi.org/10.1371/journal.pone.0269126
 
+---
 
+## Contributors
 
-
+| Name | Slack Handle |
+|------|-------------|
+| Sanzida Akhter Anee | @Sanzida |
+| Sk Arif | @arif_shaikh |
+| Nada Ghozlan | @Nad1 |
+| Mennatallah Mohamed Ebrahim Mahmoud | @Mennatallah |
+| Stéphie Raveloson | @StephieRav |
+| Chidimma Nwaku | @Mma |
+| Zaka Ullah | @Zaka |
+| Idahosa Clinton | @doc_idahosa |
