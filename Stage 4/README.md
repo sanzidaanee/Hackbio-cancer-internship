@@ -124,10 +124,7 @@ The pipeline begins with the TCGA-LGG dataset and a shared preprocessing step. I
 | Name | Slack Handle |
 |------|-------------|
 | Sanzida Akhter Anee | @Sanzida |
-| Sk Arif | @arif_shaikh |
 | Nada Ghozlan | @Nad1 |
-| Mennatallah Mohamed Ebrahim Mahmoud | @Mennatallah |
 | Stéphie Raveloson | @StephieRav |
 | Chidimma Nwaku | @Mma |
-| Zaka Ullah | @Zaka |
 | Idahosa Clinton | @doc_idahosa |
