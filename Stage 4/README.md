@@ -29,7 +29,7 @@ Gliomas are primary brain tumors arising from glial cells, accounting for approx
 
 ## Full Project Workflow
 
-![Uploading workflow_diagram.png…]()
+<img width="3276" height="4716" alt="workflow_diagram" src="https://github.com/user-attachments/assets/ec61153d-1a53-4e62-b576-40f3bed56126" />
 
 The pipeline begins with the TCGA-LGG dataset and a shared preprocessing step. It then splits into two parallel branches — the **DEA branch (R)** performs differential expression, visualization, and GO enrichment analysis, while the **ML branch (Python)** performs feature selection, classification, and model evaluation. Both branches converge into a combined key results section identifying the final biomarker candidates.
 
