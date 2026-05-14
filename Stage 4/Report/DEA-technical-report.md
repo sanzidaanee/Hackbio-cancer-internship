@@ -344,6 +344,14 @@ legend("topleft",
        pch    = 16)
 ```
 
+
+
+
+
+<img width="1190" height="735" alt="Volcano_plot" src="https://github.com/user-attachments/assets/e33cd22b-ef12-48fb-ad94-bc3903462d60" />
+
+
+
 **Figure 1:** Volcano plot of TCGA-LGG differential expression. Red points: upregulated in IDH-mutant (logFC > 1, p < 0.01). Blue points: downregulated in IDH-mutant. Dashed lines mark the thresholds.
 
 ---
@@ -381,6 +389,12 @@ heatmap.2(
   main          = "DEG Expression Heatmap: IDH Mutant vs WT"
 )
 ```
+
+
+
+<img width="1000" height="800" alt="heatmap_output" src="https://github.com/user-attachments/assets/3410b4ab-2347-47b7-b982-fd73c8b07a51" />
+
+
 
 **Figure 2:** Hierarchical clustering heatmap of 5,916 DEGs. Red column bar = WT samples; Blue column bar = Mutant samples. Row-scaled expression shows distinct separation between the two IDH status groups.
 
@@ -429,6 +443,10 @@ TCGAvisualize_EAbarplot(
   filename    = "upregulated_GO_BP.pdf"
 )
 
+
+<img width="9000" height="4500" alt="Upregulated_EA" src="https://github.com/user-attachments/assets/1a110888-361b-434e-ab9f-faa7172bc5a1" />
+
+
 # Barplot — Downregulated
 TCGAvisualize_EAbarplot(
   tf          = rownames(ansDown$ResBP),
@@ -440,6 +458,10 @@ TCGAvisualize_EAbarplot(
   filename    = "downregulated_GO_BP.pdf"
 )
 ```
+
+<img width="9000" height="4500" alt="Downregulated_EA" src="https://github.com/user-attachments/assets/a747bb89-b270-4b0e-8fe5-32508cde6f2a" />
+
+
 
 ---
 
