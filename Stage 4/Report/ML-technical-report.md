@@ -27,6 +27,8 @@ This report documents the supervised machine learning pipeline used to classify 
 
 ### ML Pipeline Overview
 
+<img width="3240" height="5640" alt="ml_workflow_diagram" src="https://github.com/user-attachments/assets/43ad4c70-545f-4bad-b0dc-f3876722fd1b" />
+
 ```
 Normalized Expression Matrix (34,539 genes × 494 samples)
                         │
