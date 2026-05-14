@@ -446,6 +446,9 @@ TCGAvisualize_EAbarplot(
 
 <img width="9000" height="4500" alt="Upregulated_EA" src="https://github.com/user-attachments/assets/1a110888-361b-434e-ab9f-faa7172bc5a1" />
 
+Figure 3: Functional enrichment analysis of upregulated genes for low-grade gliomas (LGG).
+
+---
 
 # Barplot — Downregulated
 TCGAvisualize_EAbarplot(
@@ -460,6 +463,9 @@ TCGAvisualize_EAbarplot(
 ```
 
 <img width="9000" height="4500" alt="Downregulated_EA" src="https://github.com/user-attachments/assets/a747bb89-b270-4b0e-8fe5-32508cde6f2a" />
+
+
+Figure 4: Functional enrichment analysis of downregulated genes for low-grade gliomas (LGG).
 
 
 
