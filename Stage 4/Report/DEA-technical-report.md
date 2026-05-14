@@ -26,7 +26,8 @@
 
 ## 1. DEA Pipeline Workflow
 
-![DEA Pipeline Workflow](./dea_pipeline_workflow.png)
+
+<img width="3240" height="5640" alt="dea_pipeline_workflow" src="https://github.com/user-attachments/assets/d30df082-4f12-49bf-a0b2-154b40bc3989" />
 
 The pipeline begins with raw TCGA-LGG RNA-Seq data and flows through seven structured steps: data acquisition, metadata construction, normalization, differential expression analysis, volcano plot visualization, heatmap clustering, and GO functional enrichment. The workflow splits at enrichment to examine upregulated and downregulated gene sets separately.
 
@@ -488,7 +489,8 @@ TCGAvisualize_EAbarplot(
 
 ### Figure 1 — Volcano Plot
 
-![Volcano Plot: IDH Mutant vs Wild-Type LGG](./figures/Volcano_plot.png)
+
+<img width="1190" height="735" alt="Volcano_plot" src="https://github.com/user-attachments/assets/b4ebcc96-b787-4d7f-8635-21cd1ba97055" />
 
 **Figure 1. Volcano plot of differentially expressed genes in TCGA-LGG (IDH Mutant vs Wild-Type).**  
 The X-axis shows the log₂ fold change and the Y-axis shows the −log₁₀ adjusted p-value. **Red points** indicate significantly upregulated genes (logFC > 1, p < 0.01); **blue points** indicate significantly downregulated genes (logFC < −1, p < 0.01); **grey points** are not significant. Dashed vertical lines mark the ±1 logFC threshold and the dashed horizontal line marks FDR = 0.01. A total of 5,916 genes passed both thresholds.
@@ -497,7 +499,8 @@ The X-axis shows the log₂ fold change and the Y-axis shows the −log₁₀ ad
 
 ### Figure 2 — Hierarchical Clustering Heatmap
 
-![Heatmap of DEGs: IDH Mutant vs Wild-Type](./figures/heatmap_output.png)
+
+<img width="1000" height="800" alt="heatmap_output" src="https://github.com/user-attachments/assets/ecab8e60-b074-4391-baa9-42184685c6d5" />
 
 **Figure 2. Hierarchical clustering heatmap of 5,916 differentially expressed genes across 494 TCGA-LGG samples.**  
 Rows represent genes; columns represent patient samples. The **red column bar** indicates IDH-Mutant samples (n = 419); the **blue column bar** indicates Wild-Type samples (n = 94). Expression values are row-scaled (Z-score). Hierarchical clustering was applied to both rows and columns using the `heatmap.2()` function with the Blue-Red 2 colour palette. The heatmap reveals clear transcriptomic separation between IDH-Mutant and Wild-Type tumours, consistent with genome-wide G-CIMP hypermethylation in IDH-Mutant LGG.
@@ -506,7 +509,7 @@ Rows represent genes; columns represent patient samples. The **red column bar** 
 
 ### Figure 3 — GO Enrichment: Upregulated Genes
 
-![GO Enrichment Barplot — Upregulated Genes](./figures/Upregulated_EA.png)
+<img width="9000" height="4500" alt="Upregulated_EA" src="https://github.com/user-attachments/assets/8a386646-1503-40bd-9408-1844aeecaf39" />
 
 **Figure 3. Gene Ontology (Biological Process) enrichment barplot for 1,681 upregulated genes in IDH-Mutant LGG.**  
 The top enriched GO:BP terms are shown ranked by −log₁₀(FDR). Upregulated pathways are predominantly associated with neural signalling and cell communication, including **synaptic transmission**, **cell-cell signalling**, **homophilic cell adhesion**, and **transmission of nerve impulse**. These findings suggest that IDH-Mutant tumours retain neuronal-like signalling properties, consistent with their glial progenitor cell origin and relatively better prognosis compared to IDH-Wildtype glioblastoma.
@@ -515,7 +518,7 @@ The top enriched GO:BP terms are shown ranked by −log₁₀(FDR). Upregulated 
 
 ### Figure 4 — GO Enrichment: Downregulated Genes
 
-![GO Enrichment Barplot — Downregulated Genes](./figures/Downregulated_genes_EA.png)
+<img width="9000" height="4500" alt="Downregulated_EA" src="https://github.com/user-attachments/assets/f5c063ba-5f77-4b00-aa9d-92a3add0c819" />
 
 **Figure 4. Gene Ontology (Biological Process) enrichment barplot for 4,235 downregulated genes in IDH-Mutant LGG.**  
 Downregulated pathways are dominated by developmental and morphogenetic processes, including **anterior/posterior pattern formation**, **skeletal system development**, **regionalization**, **pattern specification**, and **embryonic morphogenesis**. The silencing of these developmental gene programs is mechanistically explained by genome-wide CpG island hypermethylation (G-CIMP phenotype) driven by 2-hydroxyglutarate (2-HG), the oncometabolite produced by mutant IDH1/IDH2 enzymes.
