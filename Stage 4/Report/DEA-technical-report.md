@@ -450,7 +450,8 @@ Figure 3: Functional enrichment analysis of upregulated genes for low-grade glio
 
 ---
 
-# Barplot — Downregulated
+
+# # Barplot of top enriched GO:BP terms — Downregulated
 TCGAvisualize_EAbarplot(
   tf          = rownames(ansDown$ResBP),
   GOBPTab     = ansDown$ResBP,
@@ -460,14 +461,14 @@ TCGAvisualize_EAbarplot(
   ylab        = "GO Terms",
   filename    = "downregulated_GO_BP.pdf"
 )
-```
+
 
 <img width="9000" height="4500" alt="Downregulated_EA" src="https://github.com/user-attachments/assets/a747bb89-b270-4b0e-8fe5-32508cde6f2a" />
 
 
 Figure 4: Functional enrichment analysis of downregulated genes for low-grade gliomas (LGG).
 
-
+```
 
 ---
 
